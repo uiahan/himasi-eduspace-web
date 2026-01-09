@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Organization extends Model
 {
-    //
+    protected $guarded = ['id'];
+
+    public function department() {
+        return $this->hasMany(Department::class);
+    }
 }
