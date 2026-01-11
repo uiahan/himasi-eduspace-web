@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Organizations\Tables;
 
+use App\Models\Organization;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -14,15 +15,11 @@ class OrganizationsTable
     {
         return $table
             ->columns([
-                TextColumn::make('created_at')
-                    ->dateTime()
+                TextColumn::make('about')
+                    ->label('Visi, Misi & Tentang Kabinet')
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
+                    ->limit(100),])
             ->filters([
                 //
             ])
