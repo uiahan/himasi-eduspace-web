@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 py-7 px-60 border-0 fixed flex justify-between">
+<div class="navbar bg-base-100 py-7 z-50 px-60 border-0 fixed flex justify-between">
     <div class="flex gap-x-10 items-center">
         <div class="flex gap-3 items-center">
             <img src="/assets/img/logo.png" class="w-10 h-10 rounded-full object-cover" alt="">
@@ -7,8 +7,8 @@
     </div>
     <div>
         <ul class="menu menu-horizontal px-1">
-            <li><a>Beranda</a></li>
-            <li><a>Tentang</a></li>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/about">Tentang</a></li>
             <li>
                 <details>
                     <summary>Departemen</summary>
@@ -18,8 +18,8 @@
                     </ul>
                 </details>
             </li>
-            <li><a>Kegiatan</a></li>
-            <li><a>Perekrutan</a></li>
+            <li><a href="/proker">Proker</a></li>
+            <li><a href="/requirement">Perekrutan</a></li>
         </ul>
     </div>
     <div class="gap-x-3 flex">
