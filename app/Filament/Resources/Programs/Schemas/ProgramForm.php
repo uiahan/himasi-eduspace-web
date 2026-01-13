@@ -2,7 +2,11 @@
 
 namespace App\Filament\Resources\Programs\Schemas;
 
+use App\Models\Department;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -15,24 +19,29 @@ class ProgramForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('photo'),
-                Textarea::make('background')
+                FileUpload::make('photo')
+                    ->image()
+                    ->imagePreviewHeight('150')
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/webp'])
+                    ->maxSize(2048) // 2 MB (dalam KB)
+                    ->required(), // size in KB (2 MB)
+                RichEditor::make('background')
+                    ->columnSpanFull(),
+                RichEditor::make('activity')
                     ->required()
                     ->columnSpanFull(),
-                Textarea::make('activity')
+                RichEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
-                Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('location')
+                RichEditor::make('location')
                     ->required()
                     ->columnSpanFull(),
                 DatePicker::make('date')
                     ->required(),
-                TextInput::make('department_id')
+                Select::make('department_id')
                     ->required()
-                    ->numeric(),
+                    ->label('Departemen')
+                    ->options(Department::pluck('name', 'id')->toArray()),
             ]);
     }
 }

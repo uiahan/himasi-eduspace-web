@@ -22,6 +22,8 @@ class StaffResource extends Resource
 
     protected static ?string $navigationLabel = 'Kelola Pengurus';
 
+    protected static ?string $breadcrumb = 'Pengurus';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle;
 
     public static function form(Schema $schema): Schema

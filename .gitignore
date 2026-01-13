@@ -21,5 +21,14 @@
 /vendor
 Homestead.json
 Homestead.yaml
-Thumbs.db
-.db_laravel
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sqlite-shm
+*.sqlite-wal
+database.sqlite
+database.sqlite3
+/storage/*.sqlite
+/storage/*.sqlite3

@@ -16,20 +16,15 @@ class TasksTable
             ->columns([
                 TextColumn::make('submission')
                     ->searchable(),
-                TextColumn::make('course_id')
-                    ->numeric()
+                TextColumn::make('course.name')
+                    ->label('course')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('user_id')
-                    ->numeric()
+                TextColumn::make('user.name')
+                    ->label('user')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //
