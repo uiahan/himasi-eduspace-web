@@ -1,5 +1,5 @@
 <img src="/assets/svg/wave-bottom.svg" alt="">
-<footer class="footer sm:footer-horizontal bg-green-700 text-white pb-32 pt-20 xl:px-60">
+<footer class="footer sm:footer-horizontal bg-green-700 text-white pb-32 xl:pt-20 pt-32 xl:px-60 px-5">
     <aside>
         <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
             clip-rule="evenodd" class="fill-current">

@@ -16,10 +16,10 @@ class StaffForm
             ->components([
                 FileUpload::make('photo')
                     ->image()
-                    ->imagePreviewHeight('150')
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/webp'])
-                    ->maxSize(2048) // 2 MB (dalam KB)
-                    ->required(), // size in KB (2 MB)
+                    ->disk('public')
+                    ->visibility('public')
+                    ->directory('staff-photos')
+                    ->required(),
 
                 TextInput::make('name')
                     ->label('Nama Lengkap')

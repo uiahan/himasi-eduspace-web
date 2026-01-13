@@ -20,7 +20,7 @@ class StaffResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
-    protected static ?string $navigationLabel = 'Kelola Pengurus';
+    protected static ?string $navigationLabel = 'Pengurus';
 
     protected static ?string $breadcrumb = 'Pengurus';
 
@@ -41,6 +41,11 @@ class StaffResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Organisasi';
     }
 
     public static function getPages(): array

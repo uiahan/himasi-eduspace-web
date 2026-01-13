@@ -16,7 +16,9 @@ class CourseForm
                     ->required(),
                 \Filament\Forms\Components\FileUpload::make('photo')
                     ->image()
-                    ->maxSize(2048)
+                    ->disk('public')
+                    ->visibility('public')
+                    ->directory('logo-departement')
                     ->required(),
                 \Filament\Forms\Components\RichEditor::make('description')
                     ->required()

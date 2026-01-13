@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('logo');
             $table->text('about');
             $table->text('vision');
             $table->text('mission');
+            $table->enum('status', ['active', 'nonactive'])->default('active');
             $table->timestamps();
         });
     }

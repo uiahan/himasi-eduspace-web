@@ -18,7 +18,8 @@ class ProgramsTable
                 TextColumn::make('name')
                     ->searchable(),
                 ImageColumn::make('photo')
-                    ->searchable(),
+                    ->disk('public')
+                    ->visibility('public'),
                 TextColumn::make('date')
                     ->date()
                     ->sortable(),

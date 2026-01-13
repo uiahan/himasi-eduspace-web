@@ -20,7 +20,7 @@ class TaskResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ListBullet;
 
-    protected static ?string $navigationLabel = 'Kelola Tugas';
+    protected static ?string $navigationLabel = 'Tugas';
 
     protected static ?int $navigationSort = 7;
 
@@ -39,6 +39,11 @@ class TaskResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Kursus';
     }
 
     public static function getPages(): array

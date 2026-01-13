@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Departments\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
@@ -16,8 +17,8 @@ class DepartmentsTable
         return $table
             ->columns([
                 ImageColumn::make('logo')
-                    ->searchable(),
-                // ->disk('public'),
+                ->disk('public')
+                ->visibility('public'),
                 TextColumn::make('name')
                     ->searchable(),
             ])
@@ -26,6 +27,7 @@ class DepartmentsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

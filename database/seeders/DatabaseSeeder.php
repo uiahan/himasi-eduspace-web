@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('admin123'),
-            'role' => 'admin',
-            'phone' => '08123456789',
+            'name' => env('ADMIN_NAME'),
+            'email' => env('ADMIN_EMAIL'),
+            'password' => bcrypt(env('ADMIN_PASSWORD')),
+            'role' => env('ADMIN_ROLE'),
+            'phone' => env('ADMIN_PHONE'),
         ]);
 
         for ($i = 0; $i <= 10; $i++) {
@@ -40,9 +40,12 @@ class DatabaseSeeder extends Seeder
         }
 
         Organization::create([
+            "name" => "Sibernetika",
+            "logo" => "logo",
             "about" => "Kami adalah organisasi yang berdedikasi untuk menyediakan layanan terbaik bagi komunitas kami. Visi kami adalah menciptakan dunia yang lebih baik melalui inovasi dan kolaborasi. Misi kami meliputi pemberdayaan individu, pengembangan berkelanjutan, dan kontribusi positif terhadap masyarakat.",
             "vision" => "Menciptakan dunia yang lebih baik melalui inovasi dan kolaborasi.",
             "mission" => "Pemberdayaan individu, pengembangan berkelanjutan, dan kontribusi positif terhadap masyarakat.",
+            "status" => "active",
         ]);
 
         for ($i = 0; $i < 6; $i++) {

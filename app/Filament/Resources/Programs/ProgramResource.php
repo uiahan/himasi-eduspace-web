@@ -20,7 +20,7 @@ class ProgramResource extends Resource
 
     protected static ?int $navigationSort = 5;
 
-    protected static ?string $navigationLabel = 'Kelola Program Kerja';
+    protected static ?string $navigationLabel = 'Program Kerja';
     protected static ?string $breadcrumb = 'Program Kerja';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedFolderOpen;
@@ -40,6 +40,11 @@ class ProgramResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Organisasi';
     }
 
     public static function getPages(): array

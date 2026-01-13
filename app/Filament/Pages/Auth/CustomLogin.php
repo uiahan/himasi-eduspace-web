@@ -13,7 +13,7 @@ class CustomLogin extends PagesLogin
      */
     public function getHeading(): string | Htmlable
     {
-        return 'KABINET SIBERNETIKA';
+        return 'HIMASI - Admin Panel';
     }
 
     /**

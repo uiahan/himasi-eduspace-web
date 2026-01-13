@@ -18,25 +18,21 @@ class DepartmentForm
             ->components([
                 FileUpload::make('logo')
                     ->image()
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/webp'])
-                    ->maxSize(2048) // 2 MB (dalam KB)
+                    ->disk('public')
+                    ->visibility('public')
+                    ->directory('logo-departement')
                     ->required(),
-
                 TextInput::make('name')
                     ->required(),
-
                 RichEditor::make('about')
                     ->required()
                     ->columnSpanFull(),
-
                 RichEditor::make('vision')
                     ->required()
                     ->columnSpanFull(),
-
                 RichEditor::make('mision')
                     ->required()
                     ->columnSpanFull(),
-
                 Hidden::make('organization_id')
                     ->default(fn() => Organization::first()->id),
             ]);

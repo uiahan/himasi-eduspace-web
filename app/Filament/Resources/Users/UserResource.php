@@ -20,11 +20,11 @@ class UserResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Users;
 
-    protected static ?string $breadcrumb = 'Kelola Pengguna';
+    protected static ?string $breadcrumb = 'Akun User';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationLabel = 'Kelola Pengguna';
+    protected static ?string $navigationLabel = 'Akun User';
 
     public static function form(Schema $schema): Schema
     {
@@ -41,6 +41,11 @@ class UserResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Akun';
     }
 
     public static function getPages(): array

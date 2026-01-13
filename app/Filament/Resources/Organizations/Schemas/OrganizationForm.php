@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources\Organizations\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
 
 class OrganizationForm
 {
@@ -13,6 +15,16 @@ class OrganizationForm
     {
         return $schema
             ->components([
+                TextInput::make("name")
+                ->label("Name Kabinet")
+                ->required(),
+                FileUpload::make('logo')
+                ->label('Logo Kabinet')
+                ->image()
+                ->disk('public')
+                ->directory('logo-kabinet')
+                ->visibility('public')
+                ->required(),
                 RichEditor::make('about')
                     ->toolbarButtons([
                         ['bold', 'italic'],

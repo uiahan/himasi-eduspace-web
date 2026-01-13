@@ -19,8 +19,7 @@ class DepartmentResource extends Resource
     protected static ?string $model = Department::class;
     protected static ?string $breadcrumb = 'Departemen';
     protected static ?int $navigationSort = 3;
-    protected static ?string $navigationLabel = 'Kelola Departemen';
-
+    protected static ?string $navigationLabel = 'Departemen';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleGroup;
 
@@ -39,6 +38,11 @@ class DepartmentResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Organisasi';
     }
 
     public static function getPages(): array

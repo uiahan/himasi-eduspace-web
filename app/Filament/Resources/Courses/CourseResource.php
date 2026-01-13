@@ -20,8 +20,7 @@ class CourseResource extends Resource
 
     protected static ?int $navigationSort = 6;
 
-    protected static ?string $navigationLabel = 'Kelola Course';
-
+    protected static ?string $navigationLabel = 'Course';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
 
@@ -40,6 +39,11 @@ class CourseResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Kursus';
     }
 
     public static function getPages(): array

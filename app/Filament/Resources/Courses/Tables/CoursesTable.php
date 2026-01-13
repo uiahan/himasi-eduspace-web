@@ -18,7 +18,8 @@ class CoursesTable
                 TextColumn::make('name')
                     ->searchable(),
                 ImageColumn::make('photo')
-                    ->searchable(),
+                    ->disk('public')
+                    ->visibility('public'),
                 TextColumn::make('video')
                     ->searchable(),
                 TextColumn::make('program.name')

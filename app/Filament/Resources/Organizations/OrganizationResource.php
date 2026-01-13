@@ -18,11 +18,11 @@ class OrganizationResource extends Resource
 {
     protected static ?string $model = Organization::class;
 
-    protected static ?string $breadcrumb = 'Kelola Visi Misi & Tentang Kabinet';
+    protected static ?string $breadcrumb = 'Visi Misi & Tentang Kabinet';
 
     protected static ?int $navigationSort = 2;
 
-    protected static ?string $navigationLabel = 'Kelola Kabinet';
+    protected static ?string $navigationLabel = 'Kabinet';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
     public static function form(Schema $schema): Schema
@@ -40,6 +40,11 @@ class OrganizationResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Organisasi';
     }
 
     public static function getPages(): array

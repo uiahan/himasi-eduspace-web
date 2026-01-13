@@ -4,21 +4,31 @@
 @section('body')
 
     {{-- header --}}
-    <div
-        class="xl:flex flex-col items-center justify-center xl:min-h-[90vh] xl:pt-20 px-5 bg-green-700 xl:px-60 pb-14 xl:pb-0 pt-32 xl:py-0">
-        <div class="xl:text-6xl text-2xl font-bold text-white text-center">
-            <h1 data-aos="fade-up" data-aos-duration="1000">HIMPUNAN MAHASISWA</h1>
-            <h1 data-aos="fade-up" data-aos-duration="1500" class="mt-3">SISTEM INFORMASI</h1>
-        </div>
-        <div class="xl:text-center text- text-white mt-5 xl:px-32 text-justify">
-            <p data-aos="fade-up" data-aos-duration="2000">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                molestias deleniti numquam, illo inventore consequatur ullam, ab minus adipisci veritatis ipsa possimus,
-                voluptates magnam aliquid delectus pariatur commodi minima nihil.</p>
+    <div class="relative xl:min-h-[90vh] pt-52 xl:pt-14 xl:px-60 pb-32 xl:pb-0 bg-cover bg-center"
+        style="background-image: url('/assets/img/himasi.png');">
+        <div class="absolute inset-0 bg-green-700/70 backdrop-blur-sm"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center xl:h-full">
+            <div class="xl:text-6xl text-3xl font-bold text-white text-center">
+                <h1 data-aos="fade-up" data-aos-duration="1000">
+                    HIMPUNAN MAHASISWA
+                </h1>
+                <h1 data-aos="fade-up" data-aos-duration="1500" class="mt-3">
+                    SISTEM INFORMASI
+                </h1>
+            </div>
+
+            <div class="xl:text-center px-5 text-white mt-5 xl:px-32 text-justify">
+                <p data-aos="fade-up" data-aos-duration="2000">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
+                    molestias deleniti numquam, illo inventore consequatur ullam,
+                    ab minus adipisci veritatis ipsa possimus.
+                </p>
+            </div>
         </div>
     </div>
 
     {{-- about --}}
-    <div class="xl:px-60 px-5 xl:pt-44 pt-14 xl:pb-0 pb-8 xl:flex gap-20 items-center">
+    <div class="xl:px-60 px-5 xl:pt-44 pt-32 xl:pb-0 pb-24 xl:flex gap-20 items-center">
         <div class="xl:text-6xl text-3xl font-bold xl:hidden">
             <h1 data-aos="fade-up" data-aos-duration="2000">Kabinet Sibernetika</h1>
         </div>
@@ -54,49 +64,60 @@
     </div>
 
     {{-- department --}}
-    <img src="/assets/svg/wave-bottom.svg" alt="">
-    <div class="flex flex-col pb-32 xl:pt-0 pt-10 bg-green-700 xl:px-60 px-5">
-        <div class="xl:text-6xl text-3xl font-bold text-white text-center">
-            <h1 data-aos="fade-up" data-aos-duration="1000">Departemen</h1>
-            <h1 data-aos="fade-up" data-aos-duration="1500" class="mt-3">HIMASI</h1>
+    <img src="/assets/svg/wave-bottom.svg" alt="" class="w-full -mb-1">
+    <section class="relative bg-linear-to-b from-green-700 to-green-800 xl:px-60 px-5 pt-24 pb-32">
+        <div class="text-center mb-14">
+            <h1 class="xl:text-6xl text-3xl font-bold text-white" data-aos="fade-up" data-aos-duration="1000">
+                Departemen
+            </h1>
+            <p class="text-green-100 mt-4 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
+                Bersinergi membangun mahasiswa Sistem Informasi yang aktif, kreatif, dan berdaya saing
+            </p>
         </div>
-        <div class="grid xl:grid-cols-3 grid-cols-2 xl:gap-10 gap-3 mt-10">
-            <div class="bg-white flex justify-center p-7 rounded-xl items-center" data-aos="fade-up"
-                data-aos-duration="2000">
-                <img src="/assets/img/pendidikan.png" class="w-32" alt="">
+        <div class="grid xl:grid-cols-3 grid-cols-2 gap-6 xl:gap-10">
+            <div class="group bg-white backdrop-blur-lg border border-white
+                   rounded-2xl p-8 flex items-center justify-center
+                   hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                data-aos="fade-up" data-aos-duration="1800">
+                <img src="/assets/img/pendidikan.png" class="w-28 xl:w-32 group-hover:scale-110 transition duration-300"
+                    alt="">
             </div>
-            <div class="bg-white flex justify-center p-7 rounded-xl items-center" data-aos="fade-up"
-                data-aos-duration="2000">
-                <img src="/assets/img/hukesma.png" class="w-52" alt="">
+            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                data-aos="fade-up" data-aos-duration="1900">
+                <img src="/assets/img/hukesma.png" class="w-40 xl:w-52 group-hover:scale-110 transition duration-300"
+                    alt="">
             </div>
-            <div class="bg-white flex justify-center p-7 rounded-xl items-center" data-aos="fade-up"
-                data-aos-duration="2000">
-                <img src="/assets/img/kominfo.png" class="w-32" alt="">
+            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                data-aos="fade-up" data-aos-duration="2000">
+                <img src="/assets/img/kominfo.png" class="w-28 xl:w-32 group-hover:scale-110 transition duration-300"
+                    alt="">
             </div>
-            <div class="bg-white flex justify-center p-7 rounded-xl items-center" data-aos="fade-up"
-                data-aos-duration="2000">
-                <img src="/assets/img/pm.jpg" class="w-52" alt="">
+            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                data-aos="fade-up" data-aos-duration="2100">
+                <img src="/assets/img/pm.jpg" class="w-40 xl:w-52 group-hover:scale-110 transition duration-300"
+                    alt="">
             </div>
-            <div class="bg-white flex justify-center p-7 rounded-xl items-center" data-aos="fade-up"
-                data-aos-duration="2000">
-                <img src="/assets/img/psdm.png" class="w-48" alt="">
+            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                data-aos="fade-up" data-aos-duration="2200">
+                <img src="/assets/img/psdm.png" class="w-36 xl:w-48 group-hover:scale-110 transition duration-300"
+                    alt="">
             </div>
         </div>
-    </div>
+    </section>
 
     {{-- program --}}
-    <div class="min-h-screen xl:px-60 py-32">
+    <div class="min-h-screen xl:px-60 px-5 py-32">
         <div class="flex justify-center">
-            <div class="text-6xl font-bold text-center max-w-3xl">
-                <h1 data-aos="fade-up" data-aos-duration="1000">Program Kami</h1>
-                <p class="mt-5 text-gray-600 text-lg" data-aos="fade-up" data-aos-duration="1500">
+            <div class="text-center max-w-3xl">
+                <h1 data-aos="fade-up" data-aos-duration="1000" class="xl:text-6xl text-3xl font-bold">Program Kami</h1>
+                <p class="mt-5 text-gray-600 xl:text-lg line-clamp-2" data-aos="fade-up" data-aos-duration="1500">
                     Melalui program kerja, HIMASI hadir mendampingi mahasiswa Sistem Informasi
                     dalam bertumbuh, belajar, dan berkontribusi secara nyata.
                 </p>
             </div>
         </div>
-        <div class="grid xl:grid-cols-3 grid-cols-1 gap-10 mt-16">
-            <div class="card bg-base-100 w-96 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
+        <div class="grid xl:grid-cols-3 grid-cols-1 gap-10 xl:mt-16 mt-10">
+            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
                 <figure>
                     <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                         alt="Shoes" />
@@ -113,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card bg-base-100 w-96 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
+            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
                 <figure>
                     <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                         alt="Shoes" />
@@ -130,7 +151,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card bg-base-100 w-96 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
+            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
                 <figure>
                     <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                         alt="Shoes" />
@@ -147,7 +168,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card bg-base-100 w-96 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
+            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
                 <figure>
                     <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                         alt="Shoes" />
@@ -168,11 +189,11 @@
     </div>
 
     {{-- galeri --}}
-    <div class="min-h-screen xl:px-60 py-32 bg-gray-100">
+    <div class="min-h-screen xl:px-60 px-5 py-32 bg-gray-100">
         <div class="flex justify-center">
-            <div class="text-6xl font-bold text-center max-w-3xl">
-                <h1 data-aos="fade-up" data-aos-duration="1000">Galeri HIMASI</h1>
-                <p class="mt-5 text-gray-600 text-lg" data-aos="fade-up" data-aos-duration="1500">
+            <div class="text-center max-w-3xl">
+                <h1 data-aos="fade-up" data-aos-duration="1000" class="xl:text-6xl text-3xl font-bold">Galeri HIMASI</h1>
+                <p class="mt-5 text-gray-600 xl:text-lg line-clamp-2" data-aos="fade-up" data-aos-duration="1500">
                     Melalui program kerja, HIMASI hadir mendampingi mahasiswa Sistem Informasi
                     dalam bertumbuh, belajar, dan berkontribusi secara nyata.
                 </p>
@@ -190,13 +211,13 @@
     </div>
 
     {{-- kotak aspirasi --}}
-    <div class="min-h-screen xl:px-60 pt-32 bg-white flex items-center justify-center">
+    <div class="min-h-screen xl:px-60 px-5 pb-32 xl:pb-24 pt-32 bg-white flex items-center justify-center">
         <div class="w-full max-w-3xl">
             <div class="text-center mb-16">
-                <h1 class="text-6xl font-bold" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="xl:text-6xl text-3xl font-bold" data-aos="fade-up" data-aos-duration="1000">
                     Kotak Aspirasi
                 </h1>
-                <p class="mt-5 text-gray-600 text-lg" data-aos="fade-up" data-aos-duration="1500">
+                <p class="mt-5 text-gray-600 xl:text-lg line-clamp-2" data-aos="fade-up" data-aos-duration="1500">
                     Suaramu berarti. Kirimkan kritik, saran, atau pesan dengan tenang dan jujur.
                     Kamu boleh anonim
                 </p>

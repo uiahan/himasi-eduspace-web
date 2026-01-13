@@ -16,7 +16,8 @@ class StaffTable
         return $table
             ->columns([
                 ImageColumn::make('photo')
-                    ->searchable(),
+                    ->disk('public')
+                    ->visibility('public'),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('position')
