@@ -9,7 +9,8 @@ use Filament\Resources\Pages\ListRecords;
 class ListStaff extends ListRecords
 {
     protected static string $resource = StaffResource::class;
-
+    protected static ?string $title = 'Daftar Pengurus';
+    protected static ?string $breadcrumb = 'Daftar Pengurus';
     protected function getHeaderActions(): array
     {
         return [

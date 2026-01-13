@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Departments\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -14,21 +15,11 @@ class DepartmentsTable
     {
         return $table
             ->columns([
-                TextColumn::make('logo')
+                ImageColumn::make('logo')
                     ->searchable(),
+                // ->disk('public'),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('organization_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

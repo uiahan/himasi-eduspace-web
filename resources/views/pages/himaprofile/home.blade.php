@@ -2,13 +2,15 @@
 @section('title', 'Beranda')
 @include('components.navbar')
 @section('body')
+
     {{-- header --}}
-    <div class="flex flex-col items-center justify-center min-h-[90vh] pt-20 bg-green-700 px-60">
-        <div class="text-6xl font-bold text-white text-center">
+    <div
+        class="xl:flex flex-col items-center justify-center xl:min-h-[90vh] xl:pt-20 px-5 bg-green-700 xl:px-60 pb-14 xl:pb-0 pt-32 xl:py-0">
+        <div class="xl:text-6xl text-2xl font-bold text-white text-center">
             <h1 data-aos="fade-up" data-aos-duration="1000">HIMPUNAN MAHASISWA</h1>
             <h1 data-aos="fade-up" data-aos-duration="1500" class="mt-3">SISTEM INFORMASI</h1>
         </div>
-        <div class="text-center text-white mt-5 px-32">
+        <div class="xl:text-center text- text-white mt-5 xl:px-32 text-justify">
             <p data-aos="fade-up" data-aos-duration="2000">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
                 molestias deleniti numquam, illo inventore consequatur ullam, ab minus adipisci veritatis ipsa possimus,
                 voluptates magnam aliquid delectus pariatur commodi minima nihil.</p>
@@ -16,19 +18,30 @@
     </div>
 
     {{-- about --}}
-    <div class="px-60 pt-44 flex gap-20 items-center">
-        <img src="/assets/img/logo.png" class="w-96 h-96 rounded-xl object-cover" data-aos="fade-up"
-            data-aos-duration="1000" alt="">
+    <div class="xl:px-60 px-5 xl:pt-44 pt-14 xl:pb-0 pb-8 xl:flex gap-20 items-center">
+        <div class="xl:text-6xl text-3xl font-bold xl:hidden">
+            <h1 data-aos="fade-up" data-aos-duration="2000">Kabinet Sibernetika</h1>
+        </div>
+        <div class="xl:w-96 xl:h-96 xl:hidden flex justify-center mt-3">
+            <img src="/assets/img/logo.png" class="xl:w-96 xl:h-96 w-full h-32 rounded-xl object-cover" data-aos="fade-up"
+                data-aos-duration="1000" alt="">
+        </div>
+        <img src="/assets/img/logo.png" class="xl:w-96 hidden xl:block xl:h-96 w-60 h-60 rounded-xl object-cover"
+            data-aos="fade-up" data-aos-duration="1000" alt="">
         <div>
-            <div>
+            <div class="hidden xl:block">
                 <h1 class="font-semibold" data-aos="fade-up" data-aos-duration="1500">TENTANG KAMI</h1>
             </div>
-            <div class="text-6xl font-bold mt-5">
+            <div class="xl:text-6xl text-3xl font-bold mt-5 hidden xl:block">
                 <h1 data-aos="fade-up" data-aos-duration="2000">Kabinet</h1>
                 <h1 data-aos="fade-up" data-aos-duration="2500">Sibernetika</h1>
             </div>
-            <div class="mt-5">
-                <p data-aos="fade-up" data-aos-duration="3000">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            <div class="xl:hidden mt-5">
+                <h1 class="font-semibold" data-aos="fade-up" data-aos-duration="1500">TENTANG KAMI</h1>
+            </div>
+            <div class="xl:mt-5 mt-3">
+                <p data-aos="fade-up" data-aos-duration="3000" class="text-justify">Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Qui
                     itaque quo labore. Quas sed, similique amet sunt adipisci rem ipsum id aperiam fugiat qui minus
                     necessitatibus voluptas aut distinctio ratione?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Consequuntur, maxime!</p>
@@ -42,12 +55,12 @@
 
     {{-- department --}}
     <img src="/assets/svg/wave-bottom.svg" alt="">
-    <div class="flex flex-col pb-32 bg-green-700 px-60">
-        <div class="text-6xl font-bold text-white text-center">
+    <div class="flex flex-col pb-32 xl:pt-0 pt-10 bg-green-700 xl:px-60 px-5">
+        <div class="xl:text-6xl text-3xl font-bold text-white text-center">
             <h1 data-aos="fade-up" data-aos-duration="1000">Departemen</h1>
             <h1 data-aos="fade-up" data-aos-duration="1500" class="mt-3">HIMASI</h1>
         </div>
-        <div class="grid grid-cols-3 gap-10 mt-10">
+        <div class="grid xl:grid-cols-3 grid-cols-2 xl:gap-10 gap-3 mt-10">
             <div class="bg-white flex justify-center p-7 rounded-xl items-center" data-aos="fade-up"
                 data-aos-duration="2000">
                 <img src="/assets/img/pendidikan.png" class="w-32" alt="">
@@ -72,7 +85,7 @@
     </div>
 
     {{-- program --}}
-    <div class="min-h-screen px-60 py-32">
+    <div class="min-h-screen xl:px-60 py-32">
         <div class="flex justify-center">
             <div class="text-6xl font-bold text-center max-w-3xl">
                 <h1 data-aos="fade-up" data-aos-duration="1000">Program Kami</h1>
@@ -82,10 +95,11 @@
                 </p>
             </div>
         </div>
-        <div class="grid grid-cols-3 gap-10 mt-16">
+        <div class="grid xl:grid-cols-3 grid-cols-1 gap-10 mt-16">
             <div class="card bg-base-100 w-96 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
                 <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Shoes" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">
@@ -101,7 +115,8 @@
             </div>
             <div class="card bg-base-100 w-96 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
                 <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Shoes" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">
@@ -153,7 +168,7 @@
     </div>
 
     {{-- galeri --}}
-    <div class="min-h-screen px-60 py-32 bg-gray-100">
+    <div class="min-h-screen xl:px-60 py-32 bg-gray-100">
         <div class="flex justify-center">
             <div class="text-6xl font-bold text-center max-w-3xl">
                 <h1 data-aos="fade-up" data-aos-duration="1000">Galeri HIMASI</h1>
@@ -175,7 +190,7 @@
     </div>
 
     {{-- kotak aspirasi --}}
-    <div class="min-h-screen px-60 pt-32 bg-white flex items-center justify-center">
+    <div class="min-h-screen xl:px-60 pt-32 bg-white flex items-center justify-center">
         <div class="w-full max-w-3xl">
             <div class="text-center mb-16">
                 <h1 class="text-6xl font-bold" data-aos="fade-up" data-aos-duration="1000">

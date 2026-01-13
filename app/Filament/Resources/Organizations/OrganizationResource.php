@@ -18,7 +18,12 @@ class OrganizationResource extends Resource
 {
     protected static ?string $model = Organization::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $breadcrumb = 'Kelola Visi Misi & Tentang Kabinet';
+
+    protected static ?int $navigationSort = 2;
+
+    protected static ?string $navigationLabel = 'Kelola Kabinet';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
     public static function form(Schema $schema): Schema
     {

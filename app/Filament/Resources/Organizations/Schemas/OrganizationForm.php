@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Organizations\Schemas;
 
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\RichEditor;
 
 class OrganizationForm
 {
@@ -11,13 +13,31 @@ class OrganizationForm
     {
         return $schema
             ->components([
-                Textarea::make('about')
+                RichEditor::make('about')
+                    ->toolbarButtons([
+                        ['bold', 'italic'],
+                        ['h1', 'h2', 'h3', 'alignStart', 'alignCenter', 'alignEnd'],
+                        ['blockquote', 'bulletList', 'orderedList'],
+                        ['undo', 'redo'],
+                    ])
                     ->required()
                     ->columnSpanFull(),
-                Textarea::make('vision')
+                RichEditor::make('vision')
+                    ->toolbarButtons([
+                        ['bold', 'italic'],
+                        ['h1', 'h2', 'h3', 'alignStart', 'alignCenter', 'alignEnd'],
+                        ['blockquote', 'bulletList', 'orderedList'],
+                        ['undo', 'redo'],
+                    ])
                     ->required()
                     ->columnSpanFull(),
-                Textarea::make('mission')
+                RichEditor::make('mission')
+                    ->toolbarButtons([
+                        ['bold', 'italic'],
+                        ['h1', 'h2', 'h3', 'alignStart', 'alignCenter', 'alignEnd'],
+                        ['blockquote', 'bulletList', 'orderedList'],
+                        ['undo', 'redo'],
+                    ])
                     ->required()
                     ->columnSpanFull(),
             ]);

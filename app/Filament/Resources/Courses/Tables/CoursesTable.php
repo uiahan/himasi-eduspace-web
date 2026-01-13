@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Courses\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,23 +17,14 @@ class CoursesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('photo')
+                ImageColumn::make('photo')
                     ->searchable(),
                 TextColumn::make('video')
                     ->searchable(),
-                TextColumn::make('file')
-                    ->searchable(),
-                TextColumn::make('program_id')
-                    ->numeric()
+                TextColumn::make('program.name')
+                    ->label('program')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

@@ -8,4 +8,11 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateStaff extends CreateRecord
 {
     protected static string $resource = StaffResource::class;
+    protected static ?string $breadcrumb = 'Buat Pengurus';
+    protected static ?string $title = 'Buat Pengurus';
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

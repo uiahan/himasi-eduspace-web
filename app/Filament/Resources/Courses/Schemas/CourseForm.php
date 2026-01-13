@@ -14,21 +14,24 @@ class CourseForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('photo')
+                \Filament\Forms\Components\FileUpload::make('photo')
+                    ->image()
+                    ->maxSize(2048)
                     ->required(),
-                Textarea::make('description')
+                \Filament\Forms\Components\RichEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('video')
-                    ->required(),
-                Textarea::make('content')
+                    ->required()->columnSpanFull(),
+                \Filament\Forms\Components\RichEditor::make('content')
                     ->required()
                     ->columnSpanFull(),
-                TextInput::make('file')
+                \Filament\Forms\Components\FileUpload::make('file')
                     ->required(),
-                TextInput::make('program_id')
+                \Filament\Forms\Components\Select::make('program_id')
                     ->required()
-                    ->numeric(),
+                    ->options(\App\Models\Program::pluck('name', 'id')->toArray())
+                    ->searchable(),
             ]);
     }
 }

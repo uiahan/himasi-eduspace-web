@@ -19,10 +19,14 @@ class UserForm
                     ->label('Email address')
                     ->email()
                     ->required(),
-                DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
                     ->password()
-                    ->required(),
+                    ->revealable()
+                    ->label('Password')
+                    ->required(fn($context) => $context === 'create')
+                    ->dehydrated(fn($state) => filled($state))
+                    ->dehydrateStateUsing(fn($state) => bcrypt($state))
+                    ->helperText('Kosongkan jika tidak ingin mengubah password'),
                 TextInput::make('phone')
                     ->tel()
                     ->required(),

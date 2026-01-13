@@ -8,4 +8,12 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateDepartment extends CreateRecord
 {
     protected static string $resource = DepartmentResource::class;
+
+    protected static ?string $breadcrumb = 'Buat Departemen';
+    protected static ?string $title = 'Buat Departemen';
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
