@@ -40,8 +40,6 @@ class AdminPanelProvider extends PanelProvider
                 }
                 return asset('asset/sibernetika.png');
             })
-
-            // 3. Atur tinggi logo khusus untuk halaman login saja
             ->brandLogoHeight(fn() => Auth::check() ? '0px' : '6rem')
             ->colors([
                 'primary' => Color::Green,

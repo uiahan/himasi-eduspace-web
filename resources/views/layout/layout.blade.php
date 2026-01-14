@@ -15,7 +15,16 @@
     <div class="min-h-screen bg-white">
         @yield('body')
     </div>
-
+    @if (session('success'))
+        <div class="mb-4 rounded-lg bg-green-500/10 border border-green-500 text-green-700 px-4 py-3">
+            <div class="flex items-center justify-between">
+                <span>{{ session('success') }}</span>
+                <button onclick="this.parentElement.parentElement.remove()" class="font-bold">
+                    ✕
+                </button>
+            </div>
+        </div>
+    @endif
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

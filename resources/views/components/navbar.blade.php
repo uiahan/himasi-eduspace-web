@@ -1,4 +1,4 @@
-<div class="drawer lg:drawer-open">
+<div class="drawer">
     <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
 
     {{-- page --}}
@@ -23,18 +23,18 @@
             {{-- desktop menu --}}
             <div class="hidden lg:flex">
                 <ul class="menu menu-horizontal px-1">
-                    <li><a href="/">Beranda</a></li>
-                    <li><a href="/about">Tentang</a></li>
+                    <li><a href="{{ route('home') }}">Beranda</a></li>
+                    <li><a href={{ route('about') }}>Tentang</a></li>
                     <li>
                         <details>
                             <summary>Departemen</summary>
-                            <ul class="p-2 bg-base-100 w-40 z-[99]">
+                            <ul class="p-2 bg-base-100 w-40 z-99">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </details>
                     </li>
-                    <li><a href="/proker">Proker</a></li>
+                    <li><a href={{ route('program') }}>Proker</a></li>
                     <li><a href="/requirement">Perekrutan</a></li>
                 </ul>
             </div>
@@ -50,10 +50,10 @@
     </div>
 
     {{-- sidebar mobile --}}
-    <div class="drawer-side z-[999] xl:hidden transition-all duration-300 bg-black/30 backdrop-blur-sm">
+    <div class="drawer-side lg:hidden z-999 bg-black/30 backdrop-blur-sm">
         <label for="mobile-drawer" class="drawer-overlay"></label>
 
-        <aside class="menu p-6 w-72 min-h-full bg-base-100">
+        <aside class="menu p-6 w-72 min-h-full bg-base-100 xl-hidden">
             <div class="flex items-center gap-3 mb-6">
                 <img src="/assets/img/logo.png" class="w-10 h-10 rounded-full" alt="">
                 <span class="font-bold text-lg text-green-700">HIMASI UBSI</span>

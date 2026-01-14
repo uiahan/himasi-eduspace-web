@@ -12,54 +12,43 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::with('organization')->get();
-        if (!$departments) {
-            return response()->json(['message' => 'Department tidak ditemukan!'], 404);
-        }
-        return response()->json($departments);
+
+        return view('departments.index', compact('departments'));
     }
+
 
     public function show($id)
     {
-        $department = Department::with('organization')->find($id);
-        if (!$department) {
-            return response()->json(['message' => 'Department tidak ditemukan!'], 404);
-        }
-        return response()->json($department);
+        $department = Department::with('organization')->findOrFail($id);
+
+        return view('departments.show', compact('department'));
     }
 
     public function staff($id)
     {
-        $department = Department::find($id);
-        if (!$department) {
-            return response()->json(['message' => 'Department tidak ditemukan!'], 404);
-        }
-        $staff = Staff::where('department_id', $id)->get();
-        return response()->json($staff);
+        $department = Department::findOrFail($id);
+        $staffs = Staff::where('department_id', $id)->get();
+
+        return view('departments.staff', compact('department', 'staffs'));
     }
 
     public function program($id)
     {
-        $department = Department::find($id);
-        if (!$department) {
-            return response()->json(['message' => 'Department tidak ditemukan!'], 404);
-        }
+        $department = Department::findOrFail($id);
         $programs = Program::where('department_id', $id)->get();
-        return response()->json($programs);
+
+        return view('departments.program', compact('department', 'programs'));
     }
 
     public function show_program($department_id, $program_id)
     {
-        $department = Department::find($department_id);
-        if (!$department) {
-            return response()->json(['message' => 'Department tidak ditemukan!'], 404);
-        }
+        $department = Department::findOrFail($department_id);
+
         $program = Program::where('department_id', $department_id)
             ->where('id', $program_id)
-            ->first();
-        if (!$program) {
-            return response()->json(['message' => 'Program tidak ditemukan!'], 404);
-        }
-        return response()->json($program);
+            ->firstOrFail();
+
+        return view('programs.show', compact('department', 'program'));
     }
 
     // public function staff(Request $request)

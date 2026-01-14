@@ -19,9 +19,9 @@
 
             <div class="xl:text-center px-5 text-white mt-5 xl:px-32 text-justify">
                 <p data-aos="fade-up" data-aos-duration="2000">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    molestias deleniti numquam, illo inventore consequatur ullam,
-                    ab minus adipisci veritatis ipsa possimus.
+                    Wadah kolaborasi, inovasi, dan pengembangan diri bagi mahasiswa Sistem Informasi
+                    untuk tumbuh sebagai insan akademis yang kritis, kreatif, dan berdaya saing
+                    di era transformasi digital.
                 </p>
             </div>
         </div>
@@ -30,34 +30,33 @@
     {{-- about --}}
     <div class="xl:px-60 px-5 xl:pt-44 pt-32 xl:pb-0 pb-24 xl:flex gap-20 items-center">
         <div class="xl:text-6xl text-3xl font-bold xl:hidden">
-            <h1 data-aos="fade-up" data-aos-duration="2000">Kabinet Sibernetika</h1>
+            <h1 data-aos="fade-up" data-aos-duration="2000">Kabinet {{ $organization->name }}</h1>
         </div>
         <div class="xl:w-96 xl:h-96 xl:hidden flex justify-center mt-3">
-            <img src="/assets/img/logo.png" class="xl:w-96 xl:h-96 w-full h-32 rounded-xl object-cover" data-aos="fade-up"
-                data-aos-duration="1000" alt="">
+            <img src="{{ asset('storage/' . $organization->logo) }}"
+                class="xl:w-96 xl:h-96 w-full h-32 rounded-xl object-cover" data-aos="fade-up" data-aos-duration="1000"
+                alt="">
         </div>
-        <img src="/assets/img/logo.png" class="xl:w-96 hidden xl:block xl:h-96 w-60 h-60 rounded-xl object-cover"
-            data-aos="fade-up" data-aos-duration="1000" alt="">
+        <img src="{{ asset('storage/' . $organization->logo) }}"
+            class="xl:w-full hidden xl:block xl:h-96 w-60 h-60 rounded-xl object-cover" data-aos="fade-up"
+            data-aos-duration="1000" alt="">
         <div>
             <div class="hidden xl:block">
                 <h1 class="font-semibold" data-aos="fade-up" data-aos-duration="1500">TENTANG KAMI</h1>
             </div>
             <div class="xl:text-6xl text-3xl font-bold mt-5 hidden xl:block">
                 <h1 data-aos="fade-up" data-aos-duration="2000">Kabinet</h1>
-                <h1 data-aos="fade-up" data-aos-duration="2500">Sibernetika</h1>
+                <h1 data-aos="fade-up" data-aos-duration="2500">{{ $organization->name }}</h1>
             </div>
             <div class="xl:hidden mt-5">
                 <h1 class="font-semibold" data-aos="fade-up" data-aos-duration="1500">TENTANG KAMI</h1>
             </div>
             <div class="xl:mt-5 mt-3">
-                <p data-aos="fade-up" data-aos-duration="3000" class="text-justify">Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Qui
-                    itaque quo labore. Quas sed, similique amet sunt adipisci rem ipsum id aperiam fugiat qui minus
-                    necessitatibus voluptas aut distinctio ratione?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Consequuntur, maxime!</p>
+                <div data-aos="fade-up" data-aos-duration="3000" class="text-justify">Lorem ipsum dolor sit amet consectetur
+                    {!! $organization->about !!}</div>
             </div>
             <div class="mt-5">
-                <a href="" class="btn bg-green-700 text-white" data-aos="fade-up"
+                <a href="{{ route('about') }}" class="btn bg-green-700 text-white" data-aos="fade-up"
                     data-aos-duration="3000">Selengkapnya</a>
             </div>
         </div>
@@ -75,33 +74,15 @@
             </p>
         </div>
         <div class="grid xl:grid-cols-3 grid-cols-2 gap-6 xl:gap-10">
-            <div class="group bg-white backdrop-blur-lg border border-white
-                   rounded-2xl p-8 flex items-center justify-center
-                   hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-                data-aos="fade-up" data-aos-duration="1800">
-                <img src="/assets/img/pendidikan.png" class="w-28 xl:w-32 group-hover:scale-110 transition duration-300"
-                    alt="">
-            </div>
-            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-                data-aos="fade-up" data-aos-duration="1900">
-                <img src="/assets/img/hukesma.png" class="w-40 xl:w-52 group-hover:scale-110 transition duration-300"
-                    alt="">
-            </div>
-            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-                data-aos="fade-up" data-aos-duration="2000">
-                <img src="/assets/img/kominfo.png" class="w-28 xl:w-32 group-hover:scale-110 transition duration-300"
-                    alt="">
-            </div>
-            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-                data-aos="fade-up" data-aos-duration="2100">
-                <img src="/assets/img/pm.jpg" class="w-40 xl:w-52 group-hover:scale-110 transition duration-300"
-                    alt="">
-            </div>
-            <div class="group bg-white backdrop-blur-lg border border-white rounded-2xl p-8 flex items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-                data-aos="fade-up" data-aos-duration="2200">
-                <img src="/assets/img/psdm.png" class="w-36 xl:w-48 group-hover:scale-110 transition duration-300"
-                    alt="">
-            </div>
+            @foreach ($department as $item)
+                <div class="group bg-white backdrop-blur-lg border border-white
+                    rounded-2xl p-8 flex items-center justify-center
+                    hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                    data-aos="fade-up" data-aos-duration="2000">
+                    <img src="{{ asset('storage/' . $item->logo) }}"
+                        class="w-28 xl:w-32 group-hover:scale-110 transition duration-300" alt="{{ $item->name }}">
+                </div>
+            @endforeach
         </div>
     </section>
 
@@ -117,74 +98,46 @@
             </div>
         </div>
         <div class="grid xl:grid-cols-3 grid-cols-1 gap-10 xl:mt-16 mt-10">
-            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
-                <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">
-                        Card Title
-                        <div class="badge badge-secondary">NEW</div>
-                    </h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                    <div class="card-actions justify-end">
-                        <div class="badge badge-outline">Fashion</div>
-                        <div class="badge badge-outline">Products</div>
+            @foreach ($program as $item)
+                <div class="card bg-base-100 w-96 shadow-md hover:shadow-2xl transition-all duration-300 group rounded-2xl overflow-hidden"
+                    data-aos="fade-up" data-aos-duration="2500">
+
+                    <figure class="relative">
+                        <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
+                            class="h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+
+                        <div class="absolute top-3 left-3">
+                            <span class="badge bg-green-700 text-white font-semibold shadow">
+                                {{ $item->department->name }}
+                            </span>
+                        </div>
+                    </figure>
+
+                    <div class="card-body space-y-3">
+                        <h2 class="card-title text-lg font-bold text-gray-800">
+                            {{ $item->name }}
+                        </h2>
+
+                        <div class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                            {!! $item->description !!}
+                        </div>
+
+                        <div class="pt-2 flex justify-between items-center text-sm text-gray-500">
+                            <span class="flex items-center gap-1">
+                                📍 <span class="line-clamp-1">{!! $item->location !!}</span>
+                            </span>
+
+                            <span class="flex items-center gap-1">
+                                📅 {{ $item->date }}
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
-                <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">
-                        Card Title
-                        <div class="badge badge-secondary">NEW</div>
-                    </h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                    <div class="card-actions justify-end">
-                        <div class="badge badge-outline">Fashion</div>
-                        <div class="badge badge-outline">Products</div>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
-                <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">
-                        Card Title
-                        <div class="badge badge-secondary">NEW</div>
-                    </h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                    <div class="card-actions justify-end">
-                        <div class="badge badge-outline">Fashion</div>
-                        <div class="badge badge-outline">Products</div>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-base-100 shadow-lg" data-aos="fade-up" data-aos-duration="1500">
-                <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">
-                        Card Title
-                        <div class="badge badge-secondary">NEW</div>
-                    </h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                    <div class="card-actions justify-end">
-                        <div class="badge badge-outline">Fashion</div>
-                        <div class="badge badge-outline">Products</div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+        </div>
+        <div class="flex justify-center mt-10">
+            <a href="{{ route('program') }}" class="btn bg-green-700 text-white text-xl rounded-4xl shadow" data-aos="fade-up"
+                data-aos-duration="2500">Selengkapnya</a>
         </div>
     </div>
 
@@ -199,11 +152,11 @@
                 </p>
             </div>
         </div>
-        <div class="mt-16 grid grid-cols-2 gap-10">
+        <div class="mt-16 grid grid-cols-2 gap-10" data-aos="fade-up" data-aos-duration="1000">
             <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
             <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
         </div>
-        <div class="mt-10 grid grid-cols-3 gap-10">
+        <div class="mt-10 grid grid-cols-3 gap-10" data-aos="fade-up" data-aos-duration="1000">
             <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
             <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
             <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
@@ -222,12 +175,13 @@
                     Kamu boleh anonim
                 </p>
             </div>
-            <form action="" method="POST" class="space-y-12" data-aos="fade-up" data-aos-duration="2000">
+            <form action="{{ route('aspiration.store') }}" method="POST" class="space-y-12" data-aos="fade-up" data-aos-duration="2000">
+                @csrf
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">
                         Nama <span class="text-gray-400">(opsional)</span>
                     </label>
-                    <input type="text" placeholder="Tulis namamu atau biarkan kosong"
+                    <input type="text" placeholder="Tulis namamu atau biarkan kosong" name="name"
                         class="w-full bg-transparent border-2 rounded-xl px-3 border-gray-300 focus:border-green-700 focus:outline-none py-3 text-lg placeholder-gray-400" />
                 </div>
                 <div>
@@ -235,27 +189,28 @@
                         Kategori Aspirasi
                     </label>
                     <select
+                        name="category"
                         class="w-full bg-transparent border-2 rounded-xl px-3 border-gray-300 focus:border-green-700 focus:outline-none py-3 text-lg">
                         <option disabled selected>Pilih kategori</option>
-                        <option>Kritik</option>
-                        <option>Saran</option>
-                        <option>Apresiasi</option>
-                        <option>Lainnya</option>
+                        <option value="kritik">Kritik</option>
+                        <option value="saran">Saran</option>
+                        <option value="apresiasi">Apresiasi</option>
+                        <option value="lainnya">Lainnya</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">
                         Pesan
                     </label>
-                    <textarea placeholder="Tulis pesanmu di sini..."
+                    <textarea placeholder="Tulis pesanmu di sini..." name="message"
                         class="w-full bg-transparent border-2 rounded-xl px-3 border-gray-300 focus:border-green-700 focus:outline-none py-3 text-lg min-h-30 resize-none placeholder-gray-400"></textarea>
                 </div>
-                <div class="flex items-center gap-3">
+                {{-- <div class="flex items-center gap-3">
                     <input type="checkbox" class="checkbox checkbox-success" />
                     <span class="text-gray-600 text-sm">
                         Kirim sebagai anonim
                     </span>
-                </div>
+                </div> --}}
                 <div class="pt-6">
                     <button type="submit"
                         class="group text-green-700 font-semibold text-lg flex items-center gap-3 hover:gap-5 transition-all">

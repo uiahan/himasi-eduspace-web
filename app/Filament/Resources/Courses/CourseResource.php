@@ -22,7 +22,7 @@ class CourseResource extends Resource
 
     protected static ?string $navigationLabel = 'Course';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
 
     public static function form(Schema $schema): Schema
     {
