@@ -152,14 +152,10 @@
                 </p>
             </div>
         </div>
-        <div class="mt-16 grid grid-cols-2 gap-10" data-aos="fade-up" data-aos-duration="1000">
-            <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
-            <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
-        </div>
-        <div class="mt-10 grid grid-cols-3 gap-10" data-aos="fade-up" data-aos-duration="1000">
-            <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
-            <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
-            <img src="/assets/img/logo.png" class="h-80 w-full object-cover rounded-xl" alt="">
+        <div class="mt-16 grid grid-cols-3 gap-8" data-aos="fade-up" data-aos-duration="1000">
+            @foreach ($gallery as $item)
+                <img src="{{ asset('storage/' . $item->photo) }}" class="h-80 w-full object-cover rounded-xl" alt="photo">
+            @endforeach
         </div>
     </div>
 

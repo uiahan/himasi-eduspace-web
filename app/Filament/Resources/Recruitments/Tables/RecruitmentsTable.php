@@ -1,30 +1,25 @@
 <?php
 
-namespace App\Filament\Resources\Galleries\Tables;
+namespace App\Filament\Resources\Recruitments\Tables;
 
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
-class GalleriesTable
+class RecruitmentsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                ImageColumn::make('photo')
-                    ->disk('public')
-                    ->visibility('public'),
+                //
             ])
             ->filters([
                 //
             ])
             ->recordActions([
                 EditAction::make(),
-                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
