@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Recruitments\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,23 +17,19 @@ class RecruitmentsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('photo')
+                ImageColumn::make('photo')
+                    ->disk('public')
+                    ->visibility('public')
                     ->searchable(),
                 TextColumn::make('description')
+                    ->limit(40)
                     ->searchable(),
                 TextColumn::make('term')
+                    ->limit(40)
                     ->searchable(),
                 TextColumn::make('deadline')
                     ->date()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

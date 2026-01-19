@@ -209,7 +209,7 @@
                 </div> --}}
                 <div class="pt-6">
                     <button type="submit"
-                        class="group text-green-700 font-semibold text-lg flex items-center gap-3 hover:gap-5 transition-all">
+                        class="group cursor-pointer text-green-700 font-semibold text-lg flex items-center gap-3 hover:gap-5 transition-all">
                         Kirim Aspirasi
                         <span class="text-2xl group-hover:translate-x-1 transition-transform">
                             →

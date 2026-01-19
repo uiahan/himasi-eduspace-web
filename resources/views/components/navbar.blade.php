@@ -37,6 +37,7 @@
                     </li>
                     <li><a href={{ route('program') }}>Proker</a></li>
                     <li><a href="/requirement">Perekrutan</a></li>
+                    <li><a href="{{ route('aspiration') }}">Kotak Aspirasi</a></li>
                 </ul>
             </div>
 
@@ -61,8 +62,8 @@
             </div>
 
             <ul class="space-y-1">
-                <li><a href="/">Beranda</a></li>
-                <li><a href="/about">Tentang</a></li>
+                <li><a href="{{ route('home') }}">Beranda</a></li>
+                <li><a href="{{ route('about') }}">Tentang</a></li>
 
                 <li>
                     <details>
@@ -75,8 +76,9 @@
                     </details>
                 </li>
 
-                <li><a href="/proker">Proker</a></li>
+                <li><a href="{{ route('program') }}">Proker</a></li>
                 <li><a href="/requirement">Perekrutan</a></li>
+                <li><a href="{{ route('aspiration') }}">Kotak Aspirasi</a></li>
             </ul>
 
             <div class="mt-8 flex flex-col gap-3">

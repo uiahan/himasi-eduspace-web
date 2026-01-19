@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\Recruitments\Schemas;
 
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -14,13 +16,21 @@ class RecruitmentForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('photo'),
-                TextInput::make('description')
-                    ->required(),
-                TextInput::make('term')
-                    ->required(),
                 DatePicker::make('deadline')
                     ->required(),
+                FileUpload::make('photo')
+                    ->image()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->directory('recruitment-cover')
+                    ->columnSpanFull()
+                    ->required(),
+                RichEditor::make('description')
+                    ->required()
+                    ->columnSpanFull(),
+                RichEditor::make('term')
+                    ->required()
+                    ->columnSpanFull(),
             ]);
     }
 }

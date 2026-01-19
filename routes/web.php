@@ -14,8 +14,12 @@ Route::group(['prefix' => 'auth', 'controller' => AuthController::class], functi
     Route::post('/register', 'register')->name('auth.register');
 });
 
+Route::group(['prefix' => 'aspiration', 'controller' => AspirationController::class], function () {
+    Route::get('/', 'index')->name('aspiration');
+    Route::post('/store', 'store')->name('aspiration.store');
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tentang', [AboutController::class, 'index'])->name('about');
 Route::get('/proker', [ProgramController::class, 'index'])->name('program');
 Route::get('/department/{department}', [DepartmentController::class, 'index'])->name('department');
-Route::post('/aspiration/store', [AspirationController::class, 'store'])->name('aspiration.store');
