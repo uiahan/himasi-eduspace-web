@@ -5,6 +5,7 @@ namespace App\Filament\Resources\RecruitmentCandidates\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class RecruitmentCandidatesTable
@@ -13,7 +14,37 @@ class RecruitmentCandidatesTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('full_name')
+                    ->searchable(),
+                TextColumn::make('nim')
+                    ->searchable(),
+                TextColumn::make('photo')
+                    ->searchable(),
+                TextColumn::make('class')
+                    ->searchable(),
+                TextColumn::make('prodi')
+                    ->searchable(),
+                TextColumn::make('email')
+                    ->label('Email address')
+                    ->searchable(),
+                TextColumn::make('phone')
+                    ->searchable(),
+                TextColumn::make('reason')
+                    ->searchable(),
+                TextColumn::make('portofolio')
+                    ->searchable(),
+                TextColumn::make('department')
+                    ->searchable(),
+                TextColumn::make('department_second')
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

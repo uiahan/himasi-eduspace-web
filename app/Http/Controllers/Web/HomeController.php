@@ -13,10 +13,10 @@ class HomeController extends Controller
 {
     public function index() {
         $organization = Organization::where('status', 'active')->first();
-        $department = Department::all();
+        $departmentList = Department::all();
         $program = Program::with('department')->orderByDesc('created_at')->limit(6)->get();
         $gallery = Gallery::limit(6)->get();
 
-        return view('pages.himaprofile.home', compact('organization', 'department', 'program', 'gallery'));
+        return view('pages.himaprofile.home', compact('organization', 'departmentList', 'program', 'gallery'));
     }
 }

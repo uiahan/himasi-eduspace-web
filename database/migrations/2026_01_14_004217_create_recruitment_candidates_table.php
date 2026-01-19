@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('full_name');
             $table->string('nim');
+            $table->string('photo')->nullable();
             $table->string('class');
             $table->string('prodi')->default('Sistem Informasi');
             $table->string('email');

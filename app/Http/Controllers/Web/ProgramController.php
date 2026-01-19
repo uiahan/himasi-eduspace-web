@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     public function index(Request $request) {
-        $departments = Department::all();
+        $departmentList = Department::all();
 
         $program = Program::with('department')
             ->when($request->department, function ($query) use ($request) {
@@ -20,6 +20,6 @@ class ProgramController extends Controller
             ->paginate(9)
             ->withQueryString();
 
-        return view('pages.himaprofile.proker', compact('program', 'departments'));
+        return view('pages.himaprofile.proker', compact('program', 'departmentList'));
     }
 }

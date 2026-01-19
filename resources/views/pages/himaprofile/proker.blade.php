@@ -21,7 +21,7 @@
                     Semua
                 </a>
 
-                @foreach ($departments as $dept)
+                @foreach ($departmentList as $dept)
                     <a href="{{ route('program', ['department' => $dept->id]) }}"
                         class="px-6 py-3 rounded-full  text-sm font-semibold transition
                 {{ request('department') == $dept->id

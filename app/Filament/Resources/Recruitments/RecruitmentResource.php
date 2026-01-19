@@ -18,7 +18,7 @@ class RecruitmentResource extends Resource
 {
     protected static ?string $model = Recruitment::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMegaphone;
 
     public static function form(Schema $schema): Schema
     {
@@ -35,6 +35,11 @@ class RecruitmentResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Perekrutan';
     }
 
     public static function getPages(): array

@@ -12,8 +12,8 @@
                     <a class="text-xl font-bold text-green-700 ml-2">HIMASI UBSI</a>
                 </div>
                 <label for="mobile-drawer" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -29,8 +29,9 @@
                         <details>
                             <summary>Departemen</summary>
                             <ul class="p-2 bg-base-100 w-40 z-99">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
+                                @foreach ($departmentList as $item)
+                                    <li><a href="{{ route('department', $item->id) }}">{{ $item->name }}</a></li>
+                                @endforeach
                             </ul>
                         </details>
                     </li>
@@ -67,8 +68,9 @@
                     <details>
                         <summary>Departemen</summary>
                         <ul>
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
+                            @foreach ($departmentList as $item)
+                                <li><a href="{{ route('department', $item->id) }}">{{ $item->name }}</a></li>
+                            @endforeach
                         </ul>
                     </details>
                 </li>

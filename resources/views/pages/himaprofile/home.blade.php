@@ -74,7 +74,7 @@
             </p>
         </div>
         <div class="grid xl:grid-cols-3 grid-cols-2 gap-6 xl:gap-10">
-            @foreach ($department as $item)
+            @foreach ($departmentList as $item)
                 <div class="group bg-white backdrop-blur-lg border border-white
                     rounded-2xl p-8 flex items-center justify-center
                     hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
