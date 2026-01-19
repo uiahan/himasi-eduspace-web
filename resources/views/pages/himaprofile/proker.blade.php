@@ -36,40 +36,42 @@
 
         <div class="grid grid-cols-3 gap-10 mt-16">
             @foreach ($program as $item)
-                <div class="card bg-base-100 w-96 shadow-md hover:shadow-2xl transition-all duration-300 group rounded-2xl overflow-hidden"
-                    data-aos="fade-up" data-aos-duration="2500">
+                <a href="{{ route('program.show', $item->id) }}">
+                    <div class="card bg-base-100 w-96 shadow-md cursor-pointer hover:shadow-2xl transition-all duration-300 group rounded-2xl overflow-hidden"
+                        data-aos="fade-up" data-aos-duration="2500">
 
-                    <figure class="relative">
-                        <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
-                            class="h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <figure class="relative">
+                            <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
+                                class="h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
 
-                        <div class="absolute top-3 left-3">
-                            <span class="badge bg-green-700 text-white font-semibold shadow">
-                                {{ $item->department->name }}
-                            </span>
-                        </div>
-                    </figure>
+                            <div class="absolute top-3 left-3">
+                                <span class="badge bg-green-700 text-white font-semibold shadow">
+                                    {{ $item->department->name }}
+                                </span>
+                            </div>
+                        </figure>
 
-                    <div class="card-body space-y-3">
-                        <h2 class="card-title text-lg font-bold text-gray-800">
-                            {{ $item->name }}
-                        </h2>
+                        <div class="card-body space-y-3">
+                            <h2 class="card-title text-lg font-bold text-gray-800">
+                                {{ $item->name }}
+                            </h2>
 
-                        <div class="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                            {!! $item->description !!}
-                        </div>
+                            <div class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                                {!! $item->description !!}
+                            </div>
 
-                        <div class="pt-2 flex justify-between items-center text-sm text-gray-500">
-                            <span class="flex items-center gap-1">
-                                📍 <span class="line-clamp-1">{!! $item->location !!}</span>
-                            </span>
+                            <div class="pt-2 flex justify-between items-center text-sm text-gray-500">
+                                <span class="flex items-center gap-1">
+                                    📍 <span class="line-clamp-1">{!! $item->location !!}</span>
+                                </span>
 
-                            <span class="flex items-center gap-1">
-                                📅 {{ $item->date }}
-                            </span>
+                                <span class="flex items-center gap-1">
+                                    📅 {{ $item->date }}
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
 
         </div>

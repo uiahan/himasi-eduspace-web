@@ -24,7 +24,7 @@
             <div class="hidden lg:flex">
                 <ul class="menu menu-horizontal px-1">
                     <li><a href="{{ route('home') }}">Beranda</a></li>
-                    <li><a href={{ route('about') }}>Tentang</a></li>
+                    <li><a href="{{ route('about') }}">Tentang</a></li>
                     <li>
                         <details>
                             <summary>Departemen</summary>
@@ -35,8 +35,8 @@
                             </ul>
                         </details>
                     </li>
-                    <li><a href={{ route('program') }}>Proker</a></li>
-                    <li><a href="/requirement">Perekrutan</a></li>
+                    <li><a href="{{ route('program') }}">Program</a></li>
+                    <li><a href="{{ route('recruitment') }}">Perekrutan</a></li>
                     <li><a href="{{ route('aspiration') }}">Kotak Aspirasi</a></li>
                 </ul>
             </div>
@@ -76,8 +76,8 @@
                     </details>
                 </li>
 
-                <li><a href="{{ route('program') }}">Proker</a></li>
-                <li><a href="/requirement">Perekrutan</a></li>
+                <li><a href="{{ route('program') }}">Program</a></li>
+                <li><a href="{{ route('recruitment') }}">Perekrutan</a></li>
                 <li><a href="{{ route('aspiration') }}">Kotak Aspirasi</a></li>
             </ul>
 

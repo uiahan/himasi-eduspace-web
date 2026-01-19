@@ -22,4 +22,11 @@ class ProgramController extends Controller
 
         return view('pages.himaprofile.proker', compact('program', 'departmentList'));
     }
+
+    public function show(Program $program) {
+        $departmentList = Department::all();
+        $program->load('department');
+
+        return view('pages.himaprofile.proker-detail', compact('program', 'departmentList'));
+    }
 }

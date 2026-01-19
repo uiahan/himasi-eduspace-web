@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\DepartmentController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\ProgramController;
+use App\Http\Controllers\Web\RecruitmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'auth', 'controller' => AuthController::class], function () {
@@ -19,7 +20,14 @@ Route::group(['prefix' => 'aspiration', 'controller' => AspirationController::cl
     Route::post('/store', 'store')->name('aspiration.store');
 });
 
+Route::group(['prefix' => 'recruitment', 'controller' => RecruitmentController::class], function () {
+    Route::get('/', 'index')->name('recruitment');
+    Route::get('/{recruitment}', 'show')->name('recruitment.show');
+    Route::post('/{recruitment}/apply}', 'store')->name('recruitment.store');
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tentang', [AboutController::class, 'index'])->name('about');
 Route::get('/proker', [ProgramController::class, 'index'])->name('program');
+Route::get('/proker/{program}', [ProgramController::class, 'show'])->name('program.show');
 Route::get('/department/{department}', [DepartmentController::class, 'index'])->name('department');
