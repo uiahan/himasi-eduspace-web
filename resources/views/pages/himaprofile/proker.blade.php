@@ -1,94 +1,103 @@
 @extends('layout.layout')
-@section('title', 'Proker')
+@section('title', 'Program Kerja')
 @include('components.navbar')
+
 @section('body')
 
-    <div class="min-h-screen xl:px-60 lg:px-24 px-5 pt-32 lg:pt-44">
+    <div class="min-h-screen xl:px-60 lg:px-24 px-6 pt-44 pb-32 bg-white">
 
-        <!-- Title -->
-        <div class="flex justify-center">
-            <h1 class="text-4xl lg:text-6xl font-bold text-center" data-aos="fade-up" data-aos-duration="1000">
-                Proker Kami
+        <div class="max-w-4xl mx-auto text-center space-y-6 mb-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-bold uppercase tracking-widest" data-aos="fade-down">
+                Timeline & Activity
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter" data-aos="fade-up" data-aos-duration="1000">
+                Program <span class="text-green-700">Kami</span>
             </h1>
+            <p class="text-gray-500 text-lg lg:text-xl max-w-2xl mx-auto font-light" data-aos="fade-up" data-aos-duration="1200">
+                Eksplorasi seluruh inisiatif dan kontribusi nyata setiap departemen HIMASI untuk kemajuan mahasiswa.
+            </p>
         </div>
 
-        <hr class="mt-8 lg:mt-10" data-aos="fade-up" data-aos-duration="1500">
-
-        <!-- Filter -->
-        <div class="flex justify-center mt-8 lg:mt-10" data-aos="fade-up" data-aos-duration="2000">
-            <div class="flex flex-wrap gap-3 justify-center">
-
+        <div class="flex justify-center mb-16" data-aos="fade-up" data-aos-duration="1400">
+            <div class="inline-flex flex-wrap p-2 bg-gray-50 rounded-[2rem] border border-gray-100 justify-center gap-2">
+                
                 <a href="{{ route('program') }}"
-                    class="px-5 py-2.5 rounded-full text-sm font-semibold transition
-               {{ request('department') == null
-                   ? 'bg-green-700 text-white shadow'
-                   : 'bg-white text-gray-600 hover:bg-green-50' }}">
-                    Semua
+                    class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300
+                    {{ request('department') == null
+                        ? 'bg-green-700 text-white shadow-xl shadow-green-200'
+                        : 'text-gray-500 hover:text-green-700' }}">
+                    Semua Program
                 </a>
 
                 @foreach ($departmentList as $dept)
                     <a href="{{ route('program', ['department' => $dept->id]) }}"
-                        class="px-5 py-2.5 rounded-full text-sm font-semibold transition
-                   {{ request('department') == $dept->id
-                       ? 'bg-green-700 text-white shadow'
-                       : 'bg-white text-gray-600 hover:bg-green-50' }}">
+                        class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300
+                        {{ request('department') == $dept->id
+                            ? 'bg-green-700 text-white shadow-xl shadow-green-200'
+                            : 'text-gray-500 hover:text-green-700' }}">
                         {{ $dept->name }}
                     </a>
                 @endforeach
-
             </div>
         </div>
 
-        <!-- Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10 mt-14 lg:mt-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
             @foreach ($program as $item)
-                <a href="{{ route('program.show', $item->id) }}" data-aos="fade-up" data-aos-duration="2500">
-
-                    <div
-                        class="bg-base-100 shadow-md hover:shadow-2xl transition-all duration-300
-                            rounded-2xl overflow-hidden group h-full">
-
-                        <figure class="relative">
-                            <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
-                                class="h-56 sm:h-60 w-full object-cover
-                                    transition-transform duration-500 group-hover:scale-105" />
-
-                            <span
-                                class="absolute top-3 left-3
-                                     bg-green-700 text-white text-xs font-semibold
-                                     px-3 py-1 rounded-full shadow">
-                                {{ $item->department->name }}
-                            </span>
-                        </figure>
-
-                        <div class="p-5 space-y-3">
-                            <h2 class="text-lg font-bold text-gray-800 line-clamp-2">
-                                {{ $item->name }}
-                            </h2>
-
-                            <div class="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                                {!! $item->description !!}
+                <div class="group" data-aos="fade-up" data-aos-duration="{{ 1000 + ($loop->index * 100) }}">
+                    <a href="{{ route('program.show', $item->id) }}" class="block h-full">
+                        <div class="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col">
+                            
+                            {{-- Image --}}
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                
+                                {{-- Floating Badge --}}
+                                <div class="absolute top-6 left-6">
+                                    <span class="px-4 py-2 bg-white/90 backdrop-blur-md text-green-800 text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg">
+                                        {{ $item->department->name }}
+                                    </span>
+                                </div>
                             </div>
 
-                            <div class="pt-2 flex justify-between items-center text-xs text-gray-500">
-                                <span class="flex items-center gap-1 max-w-[60%]">
-                                    📍 <span class="line-clamp-1">{!! $item->location !!}</span>
-                                </span>
+                            {{-- Card Body --}}
+                            <div class="p-8 flex flex-col flex-grow space-y-4">
+                                <h2 class="text-2xl font-black text-gray-800 group-hover:text-green-700 transition-colors line-clamp-2 leading-tight">
+                                    {{ $item->name }}
+                                </h2>
 
-                                <span class="flex items-center gap-1 whitespace-nowrap">
-                                    📅 {{ $item->date }}
-                                </span>
+                                <div class="text-gray-500 text-sm leading-relaxed line-clamp-3 font-light">
+                                    {!! $item->description !!}
+                                </div>
+
+                                {{-- Footer Info --}}
+                                <div class="mt-auto pt-6 border-t border-gray-50 flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-green-600 text-base">📍</span>
+                                        <span class="line-clamp-1">{!! $item->location !!}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 whitespace-nowrap">
+                                        <span class="text-green-600 text-base">📅</span>
+                                        {{ $item->date }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
-                </a>
+                    </a>
+                </div>
             @endforeach
         </div>
 
-        <!-- Pagination -->
-        <div class="mt-16 lg:mt-20 flex justify-center mb-20" data-aos="fade-up" data-aos-duration="1500">
-            {{ $program->links('pagination::tailwind') }}
+        @if($program->isEmpty())
+            <div class="text-center py-40 bg-gray-50 rounded-[3rem] border-2 border-dashed border-gray-200">
+                <p class="text-gray-400 text-xl font-medium">Tidak ada program kerja untuk kategori ini.</p>
+            </div>
+        @endif
+
+        <div class="mt-24 flex justify-center" data-aos="fade-up">
+            <div class="bg-white px-6 py-4 rounded-full shadow-lg border border-gray-50">
+                {{ $program->links('pagination::tailwind') }}
+            </div>
         </div>
 
     </div>

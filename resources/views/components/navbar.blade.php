@@ -1,89 +1,101 @@
 <div class="drawer">
     <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
 
-    {{-- page --}}
+    {{-- page content --}}
     <div class="drawer-content">
-        <div class="navbar bg-base-100 py-4 lg:py-7 px-4 lg:px-60 fixed z-50 justify-between">
+        <div class="fixed top-0 w-full z-50 px-4 py-4 lg:px-8">
+            <div
+                class="navbar bg-white/90 backdrop-blur-sm border border-white/20 shadow-lg rounded-2xl max-w-7xl mx-auto transition-all duration-300">
 
-            {{-- left --}}
-            <div class="flex items-center justify-between xl:w-auto w-full gap-3">
-                <div class="flex items-center">
-                    <img src="/assets/img/logo.png" class="w-10 h-10 rounded-full object-cover" alt="">
-                    <a class="text-xl font-bold text-green-700 ml-2">HIMASI UBSI</a>
+                {{-- Left: Logo --}}
+                <div class="navbar-start">
+                    <div class="flex items-center gap-3">
+                        <img src="/assets/img/logo.png" class="w-10 h-10 rounded-xl object-cover shadow-sm"
+                            alt="Logo">
+                        <a class="text-xl font-extrabold tracking-tight text-green-700 sm:block">HIMASI UBSI</a>
+                    </div>
                 </div>
-                <label for="mobile-drawer" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </label>
-            </div>
 
-            {{-- desktop menu --}}
-            <div class="hidden lg:flex">
-                <ul class="menu menu-horizontal px-1">
-                    <li><a href="{{ route('home') }}">Beranda</a></li>
-                    <li><a href="{{ route('about') }}">Tentang</a></li>
-                    <li>
-                        <details>
-                            <summary>Departemen</summary>
-                            <ul class="p-2 bg-base-100 w-40 z-99">
-                                @foreach ($departmentList as $item)
-                                    <li><a href="{{ route('department', $item->id) }}">{{ $item->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a href="{{ route('program') }}">Program</a></li>
-                    <li><a href="{{ route('recruitment') }}">Perekrutan</a></li>
-                    <li><a href="{{ route('aspiration') }}">Kotak Aspirasi</a></li>
-                </ul>
-            </div>
+                {{-- Center: Desktop Menu --}}
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1 gap-1">
+                        <li><a href="{{ route('home') }}" class="rounded-lg hover:bg-green-50">Beranda</a></li>
+                        <li><a href="{{ route('about') }}" class="rounded-lg hover:bg-green-50">Tentang</a></li>
+                        <li>
+                            <details class="dropdown">
+                                <summary class="rounded-lg hover:bg-green-50">Departemen</summary>
+                                <ul
+                                    class="p-2 bg-white/90 backdrop-blur-lg shadow-xl border border-gray-100 rounded-xl w-52 mt-2">
+                                    @foreach ($departmentList as $item)
+                                        <li><a href="{{ route('department', $item->id) }}"
+                                                class="rounded-lg">{{ $item->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </details>
+                        </li>
+                        <li><a href="{{ route('program') }}" class="rounded-lg hover:bg-green-50">Program</a></li>
+                        <li><a href="{{ route('recruitment') }}" class="rounded-lg hover:bg-green-50">Perekrutan</a>
+                        <li><a href="{{ route('aspiration') }}" class="rounded-lg hover:bg-green-50">Kotak Aspirasi</a>
+                        </li>
+                    </ul>
+                </div>
 
-            {{-- desktop action --}}
-            <div class="hidden lg:flex gap-3">
-                <a class="btn btn-ghost">Masuk</a>
-                <a class="btn bg-green-700 text-white hover:bg-green-800">
-                    Hubungi Kami
-                </a>
+                {{-- Right: Actions & Mobile Toggle --}}
+                <div class="navbar-end gap-2">
+                    <div class="hidden lg:flex gap-2">
+                        {{-- <a class="btn btn-ghost btn-sm lowercase font-medium">Masuk</a> --}}
+                        <a href="https://www.instagram.com/himasiubsismi/" class="btn btn-sm bg-green-700 hover:bg-green-800 text-white border-none rounded-xl px-6">
+                            Hubungi Kami
+                        </a>
+                    </div>
+
+                    {{-- Mobile Toggle Button --}}
+                    <label for="mobile-drawer" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </label>
+                </div>
             </div>
         </div>
+
+        {{-- <div class="h-24"></div> --}}
+
     </div>
 
-    {{-- sidebar mobile --}}
-    <div class="drawer-side lg:hidden z-999 bg-black/30 backdrop-blur-sm">
-        <label for="mobile-drawer" class="drawer-overlay"></label>
-
-        <aside class="menu p-6 w-72 min-h-full bg-base-100 xl-hidden">
-            <div class="flex items-center gap-3 mb-6">
-                <img src="/assets/img/logo.png" class="w-10 h-10 rounded-full" alt="">
-                <span class="font-bold text-lg text-green-700">HIMASI UBSI</span>
+    {{-- Sidebar Mobile (Aesthetic Version) --}}
+    <div class="drawer-side z-[100]">
+        <label for="mobile-drawer" class="drawer-overlay bg-black/40 backdrop-blur-sm"></label>
+        <aside class="menu p-6 w-80 min-h-full bg-white backdrop-blur-xl text-base-content">
+            <div class="flex items-center gap-4 mb-8 px-2">
+                <img src="/assets/img/logo.png" class="w-12 h-12 rounded-2xl shadow-md" alt="Logo">
+                <span class="font-bold text-xl text-green-700">HIMASI UBSI</span>
             </div>
 
-            <ul class="space-y-1">
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li><a href="{{ route('about') }}">Tentang</a></li>
-
+            <ul class="space-y-2 text-md font-medium">
+                <li><a href="{{ route('home') }}" class="py-3 rounded-xl">Beranda</a></li>
+                <li><a href="{{ route('about') }}" class="py-3 rounded-xl">Tentang</a></li>
                 <li>
                     <details>
-                        <summary>Departemen</summary>
-                        <ul>
+                        <summary class="py-3 rounded-xl">Departemen</summary>
+                        <ul class="mt-2 space-y-1 ml-4 border-l-2 border-green-100">
                             @foreach ($departmentList as $item)
-                                <li><a href="{{ route('department', $item->id) }}">{{ $item->name }}</a></li>
+                                <li><a href="{{ route('department', $item->id) }}"
+                                        class="rounded-lg">{{ $item->name }}</a></li>
                             @endforeach
                         </ul>
                     </details>
                 </li>
-
-                <li><a href="{{ route('program') }}">Program</a></li>
-                <li><a href="{{ route('recruitment') }}">Perekrutan</a></li>
-                <li><a href="{{ route('aspiration') }}">Kotak Aspirasi</a></li>
+                <li><a href="{{ route('program') }}" class="py-3 rounded-xl">Program</a></li>
+                <li><a href="{{ route('recruitment') }}" class="py-3 rounded-xl">Perekrutan</a></li>
+                <li><a href="{{ route('aspiration') }}" class="py-3 rounded-xl">Kotak Aspirasi</a></li>
             </ul>
 
-            <div class="mt-8 flex flex-col gap-3">
-                <a class="btn btn-outline btn-success">Masuk</a>
-                <a class="btn bg-green-700 text-white hover:bg-green-800">
+            <div class="mt-auto flex flex-col gap-3 pt-10">
+                {{-- <a class="btn btn-outline border-gray-200 rounded-xl">Masuk</a> --}}
+                <a href="https://www.instagram.com/himasiubsismi/" class="btn bg-green-700 text-white border-none hover:bg-green-800 rounded-xl">
                     Hubungi Kami
                 </a>
             </div>

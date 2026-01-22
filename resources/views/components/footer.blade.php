@@ -1,36 +1,75 @@
-<img src="/assets/svg/wave-bottom.svg" alt="">
-<footer class="footer sm:footer-horizontal bg-green-700 text-white pb-32 xl:pt-20 pt-32 xl:px-60 px-5">
-    <aside>
-        <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-            clip-rule="evenodd" class="fill-current">
-            <path
-                d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z">
-            </path>
-        </svg>
-        <p>
-            ACME Industries Ltd.
-            <br />
-            Providing reliable tech since 1992
-        </p>
-    </aside>
-    <nav>
-        <h6 class="footer-title">Services</h6>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
-    </nav>
-    <nav>
-        <h6 class="footer-title">Company</h6>
-        <a class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
-        <a class="link link-hover">Jobs</a>
-        <a class="link link-hover">Press kit</a>
-    </nav>
-    <nav>
-        <h6 class="footer-title">Legal</h6>
-        <a class="link link-hover">Terms of use</a>
-        <a class="link link-hover">Privacy policy</a>
-        <a class="link link-hover">Cookie policy</a>
-    </nav>
+<footer class="bg-green-800 text-white pt-32 pb-12 xl:px-60 px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        
+        {{-- Brand Section --}}
+        <div class="space-y-6">
+            <div class="flex items-center gap-4">
+                <img src="/assets/img/logo.png" class="w-16 h-16 rounded-2xl bg-white p-1 shadow-lg" alt="Logo HIMASI">
+                <div>
+                    <h2 class="text-2xl font-black tracking-tighter leading-none">HIMASI</h2>
+                    <p class="text-green-300 text-xs font-bold uppercase tracking-widest mt-1">UBSI Sukabumi</p>
+                </div>
+            </div>
+            <p class="text-green-100/70 leading-relaxed text-sm">
+                Wadah kolaborasi dan inovasi mahasiswa Sistem Informasi untuk menciptakan masa depan digital yang lebih inklusif.
+            </p>
+            {{-- Social Media
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-xl bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all hover:-translate-y-1 shadow-md">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all hover:-translate-y-1 shadow-md">
+                    <i class="fab fa-youtube text-lg"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all hover:-translate-y-1 shadow-md">
+                    <i class="fab fa-linkedin text-lg"></i>
+                </a>
+            </div> --}}
+        </div>
+
+        {{-- Quick Links --}}
+        <div>
+            <h3 class="text-white font-bold mb-6 text-lg">Navigasi</h3>
+            <ul class="space-y-4 text-green-100/70 text-sm font-medium">
+                <li><a href="{{ route('home') }}" class="hover:text-white transition-colors">Beranda</a></li>
+                <li><a href="{{ route('about') }}" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                <li><a href="{{ route('program') }}" class="hover:text-white transition-colors">Program Kerja</a></li>
+                <li><a href="{{ route('recruitment') }}" class="hover:text-white transition-colors">Perekrutan</a></li>
+            </ul>
+        </div>
+
+        {{-- Departments --}}
+        <div>
+            <h3 class="text-white font-bold mb-6 text-lg">Departemen</h3>
+            <ul class="space-y-4 text-green-100/70 text-sm">
+                @foreach ($departmentList as $item)
+                    <li><a href="{{ route('department', $item->id) }}" class="hover:text-white transition-colors">{{ $item->name }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+
+        {{-- Contact Info --}}
+        <div>
+            <h3 class="text-white font-bold mb-6 text-lg">Kontak</h3>
+            <ul class="space-y-4 text-green-100/70 text-sm">
+                <li class="flex items-start gap-3">
+                    <span class="text-green-400">📍</span>
+                    <span>Jl. Veteran II No.20A, Selabatu, Kec. Cikole, Kota Sukabumi, Jawa Barat 43114</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="text-green-400">✉️</span>
+                    <span>himasi.sukabumi@ubsi.ac.id</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {{-- Bottom Bar --}}
+    <div class="pt-8 border-t border-green-700 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-green-200/50">
+        <p>© 2026 HIMASI UBSI. All rights reserved.</p>
+        <div class="flex gap-8">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+    </div>
 </footer>
