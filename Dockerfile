@@ -39,12 +39,9 @@ COPY --from=assets /app/public/build ./public/build
 # Install dependencies PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Konfigurasi Nginx
-RUN mkdir -p /run/nginx
+# Konfigurasi Nginx & Supervisor
+RUN mkdir -p /run/nginx /var/log/supervisor
 COPY .docker/nginx.conf /etc/nginx/http.d/default.conf
-
-# Konfigurasi Supervisor
-RUN mkdir -p /var/log/supervisor
 COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Set Permissions
@@ -52,9 +49,10 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 EXPOSE 80
 
-# Script untuk menjalankan perintah Laravel sebelum start
+# Script Entrypoint: Migrate, Seed, Link, & Start
 RUN echo "#!/bin/sh" > /usr/local/bin/start-app.sh && \
     echo "php artisan migrate --force" >> /usr/local/bin/start-app.sh && \
+    echo "php artisan db:seed --force" >> /usr/local/bin/start-app.sh && \
     echo "php artisan storage:link" >> /usr/local/bin/start-app.sh && \
     echo "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf" >> /usr/local/bin/start-app.sh && \
     chmod +x /usr/local/bin/start-app.sh
