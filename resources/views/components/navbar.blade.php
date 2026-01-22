@@ -19,24 +19,41 @@
                 {{-- Center: Desktop Menu --}}
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal px-1 gap-1">
-                        <li><a href="{{ route('home') }}" class="rounded-lg hover:bg-green-50">Beranda</a></li>
-                        <li><a href="{{ route('about') }}" class="rounded-lg hover:bg-green-50">Tentang</a></li>
-                        <li>
-                            <details class="dropdown">
-                                <summary class="rounded-lg hover:bg-green-50">Departemen</summary>
-                                <ul
-                                    class="p-2 bg-white/90 backdrop-blur-lg shadow-xl border border-gray-100 rounded-xl w-52 mt-2">
-                                    @foreach ($departmentList as $item)
-                                        <li><a href="{{ route('department', $item->id) }}"
-                                                class="rounded-lg">{{ $item->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </details>
+                        <li><a href="{{ route('home') }}" class="rounded-lg hover:bg-green-50 font-medium">Beranda</a>
                         </li>
-                        <li><a href="{{ route('program') }}" class="rounded-lg hover:bg-green-50">Program</a></li>
-                        <li><a href="{{ route('recruitment') }}" class="rounded-lg hover:bg-green-50">Perekrutan</a>
-                        <li><a href="{{ route('aspiration') }}" class="rounded-lg hover:bg-green-50">Kotak Aspirasi</a>
+                        <li><a href="{{ route('about') }}" class="rounded-lg hover:bg-green-50 font-medium">Tentang</a>
                         </li>
+
+                        {{-- Dropdown Department --}}
+                        <li tabindex="0" class="dropdown dropdown-hover">
+                            <div role="button"
+                                class="rounded-lg hover:bg-green-50 font-medium flex items-center gap-1">
+                                Departemen
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-50" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <ul
+                                class="dropdown-content z-[100] menu p-2 shadow-2xl bg-white border border-gray-100 rounded-2xl w-56 mt-0">
+                                @foreach ($departmentList as $item)
+                                    <li>
+                                        <a href="{{ route('department', $item->id) }}"
+                                            class="rounded-xl py-3 hover:bg-green-50 hover:text-green-700 transition-colors">
+                                            {{ $item->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+
+                        <li><a href="{{ route('program') }}"
+                                class="rounded-lg hover:bg-green-50 font-medium">Program</a></li>
+                        <li><a href="{{ route('recruitment') }}"
+                                class="rounded-lg hover:bg-green-50 font-medium">Perekrutan</a></li>
+                        <li><a href="{{ route('aspiration') }}" class="rounded-lg hover:bg-green-50 font-medium">Kotak
+                                Aspirasi</a></li>
                     </ul>
                 </div>
 
@@ -44,7 +61,8 @@
                 <div class="navbar-end gap-2">
                     <div class="hidden lg:flex gap-2">
                         {{-- <a class="btn btn-ghost btn-sm lowercase font-medium">Masuk</a> --}}
-                        <a href="https://www.instagram.com/himasiubsismi/" class="btn btn-sm bg-green-700 hover:bg-green-800 text-white border-none rounded-xl px-6">
+                        <a href="https://www.instagram.com/himasiubsismi/"
+                            class="btn btn-sm bg-green-700 hover:bg-green-800 text-white border-none rounded-xl px-6">
                             Hubungi Kami
                         </a>
                     </div>
@@ -95,7 +113,8 @@
 
             <div class="mt-auto flex flex-col gap-3 pt-10">
                 {{-- <a class="btn btn-outline border-gray-200 rounded-xl">Masuk</a> --}}
-                <a href="https://www.instagram.com/himasiubsismi/" class="btn bg-green-700 text-white border-none hover:bg-green-800 rounded-xl">
+                <a href="https://www.instagram.com/himasiubsismi/"
+                    class="btn bg-green-700 text-white border-none hover:bg-green-800 rounded-xl">
                     Hubungi Kami
                 </a>
             </div>
