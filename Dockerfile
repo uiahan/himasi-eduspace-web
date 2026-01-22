@@ -9,7 +9,7 @@ RUN npm run build
 # Stage 2: PHP Runtime
 FROM php:8.3-fpm-alpine
 
-# Install system dependencies & PHP extensions untuk Filament
+# Install system dependencies, PHP extensions, Nginx, dan Supervisor
 RUN apk add --no-cache \
     libpng-dev \
     libjpeg-turbo-dev \
@@ -19,7 +19,8 @@ RUN apk add --no-cache \
     icu-dev \
     oniguruma-dev \
     bash \
-    nginx
+    nginx \
+    supervisor
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo_mysql mbstring zip exif pcntl intl
@@ -38,13 +39,24 @@ COPY --from=assets /app/public/build ./public/build
 # Install dependencies PHP
 RUN composer install --no-dev --optimize-autoloader
 
+# Konfigurasi Nginx
+RUN mkdir -p /run/nginx
+COPY .docker/nginx.conf /etc/nginx/http.d/default.conf
+
+# Konfigurasi Supervisor
+RUN mkdir -p /var/log/supervisor
+COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # Set Permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Konfigurasi Nginx sederhana (Opsional, Coolify bisa handle ini tapi lebih aman di dalam)
-# Jika kamu pakai default Coolify, biasanya mereka sudah punya template Nginx.
-# Namun untuk Dockerfile mandiri, kamu perlu entrypoint untuk start PHP & Nginx.
-
 EXPOSE 80
 
-CMD php artisan migrate --force && php-fpm
+# Script untuk menjalankan perintah Laravel sebelum start
+RUN echo "#!/bin/sh" > /usr/local/bin/start-app.sh && \
+    echo "php artisan migrate --force" >> /usr/local/bin/start-app.sh && \
+    echo "php artisan storage:link" >> /usr/local/bin/start-app.sh && \
+    echo "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf" >> /usr/local/bin/start-app.sh && \
+    chmod +x /usr/local/bin/start-app.sh
+
+CMD ["/usr/local/bin/start-app.sh"]
