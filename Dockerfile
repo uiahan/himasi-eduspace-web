@@ -60,15 +60,15 @@ CMD curl -f http://localhost/ || exit 1
 
 # Update script start-app.sh
 RUN echo "#!/bin/sh" > /usr/local/bin/start-app.sh && \
-    # Pastikan owner folder benar tepat saat container baru nyala
+    # Pastikan owner www-data secara rekursif
     echo "chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache" >> /usr/local/bin/start-app.sh && \
-    # echo "php artisan storage:link --force" >> /usr/local/bin/start-app.sh && \
-    # Jalankan optimasi cache Laravel
+    # Tambahkan permission 775 agar grup www-data bisa nulis
+    echo "chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache" >> /usr/local/bin/start-app.sh && \
+    echo "php artisan storage:link --force" >> /usr/local/bin/start-app.sh && \
     echo "php artisan config:cache" >> /usr/local/bin/start-app.sh && \
     echo "php artisan route:cache" >> /usr/local/bin/start-app.sh && \
-    # Jalankan migrate di background
+    echo "php artisan view:cache" >> /usr/local/bin/start-app.sh && \
     echo "(sleep 5 && php artisan migrate --force) &" >> /usr/local/bin/start-app.sh && \
-    # Jalankan supervisor
     echo "/usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf" >> /usr/local/bin/start-app.sh && \
     chmod +x /usr/local/bin/start-app.sh
 
