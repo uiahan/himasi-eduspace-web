@@ -41,6 +41,8 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Konfigurasi Nginx & Supervisor
 RUN mkdir -p /run/nginx /var/log/supervisor
+# Tambahkan ini di bawah baris RUN mkdir -p /run/nginx /var/log/supervisor
+RUN mkdir -p /var/log/nginx && chown -R www-data:www-data /var/log/nginx
 COPY .docker/nginx.conf /etc/nginx/http.d/default.conf
 COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
@@ -58,9 +60,10 @@ CMD curl -f http://localhost/ || exit 1
 # Update script start-app.sh
 RUN echo "#!/bin/sh" > /usr/local/bin/start-app.sh && \
     echo "php artisan storage:link --force" >> /usr/local/bin/start-app.sh && \
-    # Jalankan migrate & seed di background supaya Nginx bisa start duluan
-    echo "(sleep 10 && php artisan migrate --force && php artisan db:seed --force) &" >> /usr/local/bin/start-app.sh && \
-    echo "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf" >> /usr/local/bin/start-app.sh && \
+    # Jalankan migrate & seed di background
+    echo "(sleep 5 && php artisan migrate --force && php artisan db:seed --force) &" >> /usr/local/bin/start-app.sh && \
+    # Jalankan supervisor di FOREGROUND (tambahkan flag -n)
+    echo "/usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf" >> /usr/local/bin/start-app.sh && \
     chmod +x /usr/local/bin/start-app.sh
 
 CMD ["/usr/local/bin/start-app.sh"]
