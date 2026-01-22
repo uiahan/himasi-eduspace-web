@@ -3,30 +3,48 @@
 @include('components.navbar')
 @section('body')
 
-    {{-- about --}}
-    <div class="px-60 pt-44 pb-32 flex gap-20 items-center justify-between">
-        <div>
-            <div>
-                <h1 class="font-semibold" data-aos="fade-up" data-aos-duration="1500">Department Kami</h1>
+    <div
+        class="xl:px-60 lg:px-24 px-5
+           pt-32 lg:pt-44 pb-24 lg:pb-32
+           flex flex-col-reverse lg:flex-row
+           gap-10 lg:gap-20
+           items-center justify-between">
+
+        <!-- Text -->
+        <div class="w-full lg:w-1/2">
+            <h1 class="font-semibold" data-aos="fade-up" data-aos-duration="1500">
+                Department Kami
+            </h1>
+
+            <div class="text-4xl lg:text-6xl font-bold mt-5">
+                <h1 data-aos="fade-up" data-aos-duration="2000">
+                    Departemen
+                </h1>
+                <h1 data-aos="fade-up" data-aos-duration="2500">
+                    {{ $department->name }}
+                </h1>
             </div>
-            <div class="text-6xl font-bold mt-5">
-                <h1 data-aos="fade-up" data-aos-duration="2000">Departemen</h1>
-                <h1 data-aos="fade-up" data-aos-duration="2500">{{ $department->name }}</h1>
-            </div>
-            <div class="mt-5" data-aos="fade-up" data-aos-duration="3000">
-                <div>{!! $department->about !!}</div>
+
+            <div class="mt-5 text-base lg:text-lg" data-aos="fade-up" data-aos-duration="3000">
+                {!! $department->about !!}
             </div>
         </div>
-        <img src="{{ asset('storage/' . $department->logo) }}" class="w-full h-96 rounded-xl object-cover"
-            data-aos="fade-up" data-aos-duration="1000" alt="{{ $department->name }}">
+
+        <!-- Image -->
+        <img src="{{ asset('storage/' . $department->logo) }}" alt="{{ $department->name }}"
+            class="w-full lg:w-1/2
+               h-64 lg:h-96
+               rounded-xl object-cover" data-aos="fade-up"
+            data-aos-duration="1000">
     </div>
 
-    <div class="px-60" data-aos="fade-up" data-aos-duration="3000">
+
+    <div class="xl:px-60 px-5" data-aos="fade-up" data-aos-duration="3000">
         <div class="bg-gray-300 h-0.5 w-full"></div>
     </div>
 
     {{-- visi & misi --}}
-    <div class="px-60 pt-32 pb-32 bg-white">
+    <div class="xl:px-60 px-5 pt-32 pb-32 bg-white">
         <div class="text-center mb-20">
             <h1 class="text-sm font-semibold tracking-widest text-gray-500" data-aos="fade-up" data-aos-duration="1000">
                 VISI & MISI
@@ -35,8 +53,7 @@
                 Arah & Tujuan Kami
             </h2>
         </div>
-
-        <div class="grid grid-cols-2 gap-16 items-start">
+        <div class="grid xl:grid-cols-2 grid-cols-1 gap-16 items-start">
             <div class="p-10 rounded-xl bg-green-700 text-white shadow-lg hover:shadow-2xl transition duration-300"
                 data-aos="fade-up" data-aos-duration="2000">
                 <h3 class="text-3xl font-bold mb-6">Visi</h3>
@@ -55,12 +72,12 @@
         </div>
     </div>
 
-    <div class="px-60" data-aos="fade-up" data-aos-duration="3000">
+    <div class="xl:px-60 px-5" data-aos="fade-up" data-aos-duration="3000">
         <div class="bg-gray-300 h-0.5 w-full"></div>
     </div>
 
     {{-- staff department --}}
-    <div class="px-60 py-32 bg-white">
+    <div class="xl:px-60 px-5 py-32 bg-white">
         <div class="text-center mb-20">
             <h1 class="text-sm font-semibold tracking-widest text-gray-500" data-aos="fade-up" data-aos-duration="1000">
                 STAFF DEPARTEMEN
@@ -71,7 +88,7 @@
         </div>
 
         @if ($department->staff->count())
-            <div class="grid grid-cols-4 gap-10">
+            <div class="grid xl:grid-cols-4 grid-cols-1 gap-10">
                 @foreach ($department->staff as $staff)
                     <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden"
                         data-aos="fade-up" data-aos-duration="2000">

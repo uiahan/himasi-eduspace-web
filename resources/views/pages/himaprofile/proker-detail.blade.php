@@ -44,7 +44,7 @@
                     Tentang Program
                 </h2>
 
-                <div class="prose max-w-none text-gray-700 leading-relaxed">
+                <div class="text-gray-700">
                     {!! $program->description !!}
                 </div>
             </div>

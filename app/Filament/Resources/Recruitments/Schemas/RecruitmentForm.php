@@ -19,7 +19,6 @@ class RecruitmentForm
                 DatePicker::make('deadline')
                     ->required(),
                 FileUpload::make('photo')
-                    ->image()
                     ->disk('public')
                     ->visibility('public')
                     ->directory('recruitment-cover')

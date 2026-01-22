@@ -30,11 +30,11 @@
     {{-- about --}}
     <div class="xl:px-60 px-5 xl:pt-44 pt-32 xl:pb-0 pb-24 xl:flex gap-20 items-center">
         <div class="xl:text-6xl text-3xl font-bold xl:hidden">
-            <h1 data-aos="fade-up" data-aos-duration="2000">Kabinet {{ $organization->name }}</h1>
+            <h1 data-aos="fade-up" data-aos-duration="1000">Kabinet {{ $organization->name }}</h1>
         </div>
         <div class="xl:w-96 xl:h-96 xl:hidden flex justify-center mt-3">
             <img src="{{ asset('storage/' . $organization->logo) }}"
-                class="xl:w-96 xl:h-96 w-full h-32 rounded-xl object-cover" data-aos="fade-up" data-aos-duration="1000"
+                class="xl:w-96 xl:h-96 w-full h-60 rounded-xl object-cover" data-aos="fade-up" data-aos-duration="1500"
                 alt="">
         </div>
         <img src="{{ asset('storage/' . $organization->logo) }}"
@@ -52,7 +52,7 @@
                 <h1 class="font-semibold" data-aos="fade-up" data-aos-duration="1500">TENTANG KAMI</h1>
             </div>
             <div class="xl:mt-5 mt-3">
-                <div data-aos="fade-up" data-aos-duration="3000" class="text-justify">Lorem ipsum dolor sit amet consectetur
+                <div data-aos="fade-up" data-aos-duration="3000" class="text-justify xl:line-clamp-4 line-clamp-17">
                     {!! $organization->about !!}</div>
             </div>
             <div class="mt-5">
@@ -152,7 +152,7 @@
                 </p>
             </div>
         </div>
-        <div class="mt-16 grid grid-cols-3 gap-8" data-aos="fade-up" data-aos-duration="1000">
+        <div class="mt-16 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-8" data-aos="fade-up" data-aos-duration="1000">
             @foreach ($gallery as $item)
                 <img src="{{ asset('storage/' . $item->photo) }}" class="h-80 w-full object-cover rounded-xl" alt="photo">
             @endforeach
