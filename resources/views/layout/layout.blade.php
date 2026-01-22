@@ -15,7 +15,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
+<body> 
     <div class="min-h-screen bg-white">
         @yield('body')
     </div>
