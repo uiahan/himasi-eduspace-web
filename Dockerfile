@@ -19,6 +19,7 @@ RUN apk add --no-cache \
     icu-dev \
     oniguruma-dev \
     bash \
+    curl \
     nginx \
     supervisor
 
@@ -61,7 +62,7 @@ CMD curl -f http://localhost/ || exit 1
 RUN echo "#!/bin/sh" > /usr/local/bin/start-app.sh && \
     echo "php artisan storage:link --force" >> /usr/local/bin/start-app.sh && \
     # Jalankan migrate & seed di background
-    echo "(sleep 5 && php artisan migrate --force && php artisan db:seed --force) &" >> /usr/local/bin/start-app.sh && \
+    # echo "(sleep 5 && php artisan migrate --force && php artisan db:seed --force) &" >> /usr/local/bin/start-app.sh && \
     # Jalankan supervisor di FOREGROUND (tambahkan flag -n)
     echo "/usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf" >> /usr/local/bin/start-app.sh && \
     chmod +x /usr/local/bin/start-app.sh
