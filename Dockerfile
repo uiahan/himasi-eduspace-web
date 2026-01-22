@@ -49,11 +49,17 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 EXPOSE 80
 
-# Script Entrypoint: Migrate, Seed, Link, & Start
+# ... (bagian atas tetap sama)
+
+# Tambahkan konfigurasi Healthcheck agar Coolify tahu container sudah siap
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+CMD curl -f http://localhost/ || exit 1
+
+# Update script start-app.sh
 RUN echo "#!/bin/sh" > /usr/local/bin/start-app.sh && \
-    echo "php artisan migrate --force" >> /usr/local/bin/start-app.sh && \
-    echo "php artisan db:seed --force" >> /usr/local/bin/start-app.sh && \
-    echo "php artisan storage:link" >> /usr/local/bin/start-app.sh && \
+    echo "php artisan storage:link --force" >> /usr/local/bin/start-app.sh && \
+    # Jalankan migrate & seed di background supaya Nginx bisa start duluan
+    echo "(sleep 10 && php artisan migrate --force && php artisan db:seed --force) &" >> /usr/local/bin/start-app.sh && \
     echo "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf" >> /usr/local/bin/start-app.sh && \
     chmod +x /usr/local/bin/start-app.sh
 
