@@ -37,3 +37,12 @@ Route::get('/health', function () {
         'status' => 'ok'
     ], 200);
 });
+
+Route::get('/debug-proxy', function () {
+    return [
+        'secure' => request()->isSecure(),
+        'scheme' => request()->getScheme(),
+        'proto' => request()->header('x-forwarded-proto'),
+        'host' => request()->getHost(),
+    ];
+});
