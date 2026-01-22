@@ -2,9 +2,8 @@
 .github
 node_modules
 vendor
-storage/*.key
 .env
 .phpunit.result.cache
 docker-compose.yml
 Dockerfile
-.dockerignore
+storage/*.key
