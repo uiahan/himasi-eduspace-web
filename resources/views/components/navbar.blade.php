@@ -19,15 +19,23 @@
                 {{-- Center: Desktop Menu --}}
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal px-1 gap-1">
-                        <li><a href="{{ route('home') }}" class="rounded-lg hover:bg-green-50 font-medium">Beranda</a>
+                        <li>
+                            <a href="{{ route('home') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('home') ? 'bg-green-700 text-white' : 'hover:bg-green-50' }}">
+                                Beranda
+                            </a>
                         </li>
-                        <li><a href="{{ route('about') }}" class="rounded-lg hover:bg-green-50 font-medium">Tentang</a>
+                        <li>
+                            <a href="{{ route('about') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('about') ? 'bg-green-700 text-white' : 'hover:bg-green-50' }}">
+                                Tentang
+                            </a>
                         </li>
 
                         {{-- Dropdown Department --}}
                         <li tabindex="0" class="dropdown dropdown-hover">
                             <div role="button"
-                                class="rounded-lg hover:bg-green-50 font-medium flex items-center gap-1">
+                                class="rounded-lg font-medium flex items-center gap-1 {{ request()->routeIs('department') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                                 Departemen
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-50" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
@@ -40,7 +48,7 @@
                                 @foreach ($departmentList as $item)
                                     <li>
                                         <a href="{{ route('department', $item->id) }}"
-                                            class="rounded-xl py-3 hover:bg-green-50 hover:text-green-700 transition-colors">
+                                            class="rounded-xl py-3 {{ request()->fullUrlIs(route('department', $item->id)) ? 'bg-green-50 text-green-700 font-bold' : 'hover:bg-green-200' }}">
                                             {{ $item->name }}
                                         </a>
                                     </li>
@@ -48,12 +56,24 @@
                             </ul>
                         </li>
 
-                        <li><a href="{{ route('program') }}"
-                                class="rounded-lg hover:bg-green-50 font-medium">Program</a></li>
-                        <li><a href="{{ route('recruitment') }}"
-                                class="rounded-lg hover:bg-green-50 font-medium">Perekrutan</a></li>
-                        <li><a href="{{ route('aspiration') }}" class="rounded-lg hover:bg-green-50 font-medium">Kotak
-                                Aspirasi</a></li>
+                        <li>
+                            <a href="{{ route('program') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('program*') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                Program
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('recruitment') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                Perekrutan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('aspiration') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('aspiration') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                Kotak Aspirasi
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -93,24 +113,55 @@
             </div>
 
             <ul class="space-y-2 text-md font-medium">
-                <li><a href="{{ route('home') }}" class="py-3 rounded-xl">Beranda</a></li>
-                <li><a href="{{ route('about') }}" class="py-3 rounded-xl">Tentang</a></li>
                 <li>
-                    <details>
-                        <summary class="py-3 rounded-xl">Departemen</summary>
+                    <a href="{{ route('home') }}"
+                        class="py-3 rounded-xl {{ request()->routeIs('home') ? 'bg-green-700 text-white' : '' }}">
+                        Beranda
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('about') }}"
+                        class="py-3 rounded-xl {{ request()->routeIs('about') ? 'bg-green-700 text-white' : '' }}">
+                        Tentang
+                    </a>
+                </li>
+                <li>
+                    <details {{ request()->routeIs('department') ? 'open' : '' }}>
+                        <summary
+                            class="py-3 rounded-xl {{ request()->routeIs('department') ? 'text-green-700 font-bold' : '' }}">
+                            Departemen
+                        </summary>
                         <ul class="mt-2 space-y-1 ml-4 border-l-2 border-green-100">
                             @foreach ($departmentList as $item)
-                                <li><a href="{{ route('department', $item->id) }}"
-                                        class="rounded-lg">{{ $item->name }}</a></li>
+                                <li>
+                                    <a href="{{ route('department', $item->id) }}"
+                                        class="rounded-lg {{ request()->fullUrlIs(route('department', $item->id)) ? 'text-green-700 font-bold bg-green-50' : '' }}">
+                                        {{ $item->name }}
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </details>
                 </li>
-                <li><a href="{{ route('program') }}" class="py-3 rounded-xl">Program</a></li>
-                <li><a href="{{ route('recruitment') }}" class="py-3 rounded-xl">Perekrutan</a></li>
-                <li><a href="{{ route('aspiration') }}" class="py-3 rounded-xl">Kotak Aspirasi</a></li>
+                <li>
+                    <a href="{{ route('program') }}"
+                        class="py-3 rounded-xl {{ request()->routeIs('program*') ? 'bg-green-700 text-white' : '' }}">
+                        Program
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('recruitment') }}"
+                        class="py-3 rounded-xl {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : '' }}">
+                        Perekrutan
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('aspiration') }}"
+                        class="py-3 rounded-xl {{ request()->routeIs('aspiration') ? 'bg-green-700 text-white' : '' }}">
+                        Kotak Aspirasi
+                    </a>
+                </li>
             </ul>
-
             <div class="mt-auto flex flex-col gap-3 pt-10">
                 {{-- <a class="btn btn-outline border-gray-200 rounded-xl">Masuk</a> --}}
                 <a href="https://www.instagram.com/himasiubsismi/"
