@@ -15,7 +15,7 @@
         <div class="absolute top-20 -left-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl"></div>
         <div class="absolute bottom-20 -right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
-        <div class="relative z-10 w-full px-6 xl:px-60 pt-20">
+        <div class="relative z-10 w-full px-6 xl:px-60 md:pt-20">
             <div class="flex flex-col items-start md:items-center justify-center md:text-center text-justify">
 
                 {{-- Badge Kecil di Atas Judul --}}
@@ -28,11 +28,11 @@
                 {{-- Judul Utama --}}
                 <div class="text-white leading-[1.1]">
                     <h1 data-aos="zoom-out-up" data-aos-duration="1200"
-                        class="md:text-7xl text-4xl font-black tracking-tighter drop-shadow-2xl">
+                        class="md:text-5xl lg:text-7xl text-4xl font-black tracking-tighter drop-shadow-2xl">
                         HIMPUNAN MAHASISWA
                     </h1>
                     <h1 data-aos="zoom-out-up" data-aos-duration="1500"
-                        class="md:text-7xl text-4xl font-black tracking-tighter mt-2 bg-linear-to-r from-green-600 to-green-700 bg-clip-text text-transparent drop-shadow-sm">
+                        class="md:text-5xl lg:text-7xl text-4xl font-black tracking-tighter mt-2 bg-linear-to-r from-green-600 to-green-700 bg-clip-text text-transparent drop-shadow-sm">
                         SISTEM INFORMASI
                     </h1>
                 </div>
@@ -407,18 +407,6 @@
                             </div>
                             <span class="text-sm font-medium text-gray-600">Anonimitas Terjamin</span>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <span class="text-sm font-medium text-gray-600">Respons Cepat</span>
-                        </div>
                     </div>
                 </div>
 
@@ -433,7 +421,7 @@
                             @csrf
 
                             <div class="space-y-2">
-                                <label class="text-xs font-bold text-green-300 uppercase tracking-widest ml-1">Nama</label>
+                                <label class="text-xs font-bold text-green-300 uppercase tracking-widest ml-1">Nama (Opsional)</label>
                                 <input type="text" placeholder="Anonim" name="name"
                                     class="w-full bg-green-900/40 border border-green-700 rounded-2xl px-6 py-4 text-white focus:bg-green-900/60 focus:ring-2 focus:ring-green-400 outline-none transition-all placeholder:text-green-600" />
                             </div>

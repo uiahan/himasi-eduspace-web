@@ -3,7 +3,7 @@
 @include('components.navbar')
 
 @section('body')
-    <div class="min-h-screen bg-white px-6 sm:px-8 md:px-16 lg:px-32 xl:px-60 pt-44 pb-32">
+    <div class="min-h-screen bg-white px-6 sm:px-8 md:px-16 lg:px-32 xl:px-60 pt-32 pb-32">
 
         {{-- Section Header --}}
         <div class="max-w-4xl mx-auto text-center space-y-6 mb-20">

@@ -16,7 +16,6 @@ class AspirationController extends Controller
 
     public function store(Request $request) {
         $validate = $request->validate([
-            'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'message' => 'required'
         ]);

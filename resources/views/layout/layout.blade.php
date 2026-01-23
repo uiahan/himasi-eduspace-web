@@ -9,7 +9,8 @@
 
     {{-- SEO & Open Graph --}}
     <meta name="title" content="HIMASI UBSI - Himpunan Mahasiswa Sistem Informasi">
-    <meta name="description" content="Wadah aspirasi dan kreativitas mahasiswa Sistem Informasi UBSI Sukabumi. Mari berkontribusi dan berkembang bersama kami.">
+    <meta name="description"
+        content="Wadah aspirasi dan kreativitas mahasiswa Sistem Informasi UBSI Sukabumi. Mari berkontribusi dan berkembang bersama kami.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="HIMASI UBSI | @yield('title')">
@@ -18,13 +19,15 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="HIMASI UBSI | @yield('title')">
-    <meta property="twitter:description" content="Wadah aspirasi dan kreativitas mahasiswa Sistem Informasi UBSI Sukabumi.">
+    <meta property="twitter:description"
+        content="Wadah aspirasi dan kreativitas mahasiswa Sistem Informasi UBSI Sukabumi.">
     <meta property="twitter:image" content="{{ asset('favicon.png') }}">
 
     {{-- Fonts & Styles --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
 
@@ -33,8 +36,13 @@
 
     <style>
         /* Mencegah scroll saat loading */
-        body.loading { overflow: hidden; }
-        #loader { transition: opacity 0.5s ease-out, visibility 0.5s; }
+        body.loading {
+            overflow: hidden;
+        }
+
+        #loader {
+            transition: opacity 0.5s ease-out, visibility 0.5s;
+        }
     </style>
 </head>
 
@@ -61,23 +69,27 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        // Loader Script
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            document.body.classList.remove('loading');
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.visibility = 'hidden';
-            }, 500);
-        });
-
         // AOS Init
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
                 once: true,
                 duration: 800,
-                easing: 'ease-out-cubic'
+                easing: 'ease-out-cubic',
+                offset: 50, // Tidak perlu scroll terlalu dalam
+                delay: 100, // Memberi sedikit jeda agar tidak kaget
             });
+        });
+
+        // Refresh AOS setelah loader hilang total
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            document.body.classList.remove('loading');
+            loader.style.opacity = '0';
+
+            setTimeout(() => {
+                loader.style.visibility = 'hidden';
+                AOS.refresh(); // Menghitung ulang posisi elemen
+            }, 500);
         });
     </script>
 

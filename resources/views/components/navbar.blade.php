@@ -5,14 +5,14 @@
     <div class="drawer-content">
         <div class="fixed top-0 w-full z-50 px-4 py-4 lg:px-8">
             <div
-                class="navbar bg-white/90 backdrop-blur-sm border border-white/20 shadow-lg rounded-2xl max-w-7xl mx-auto transition-all duration-300">
+                class="navbar bg-white/70 backdrop-blur-sm border border-white/20 shadow-lg rounded-2xl max-w-7xl mx-auto transition-all duration-300">
 
                 {{-- Left: Logo --}}
                 <div class="navbar-start">
                     <div class="flex items-center gap-3">
                         <img src="/assets/img/logo.png" class="w-10 h-10 rounded-xl object-cover shadow-sm"
                             alt="Logo">
-                        <a class="text-xl font-extrabold tracking-tight text-green-700 sm:block">HIMASI UBSI</a>
+                        <a class="md:text-xl text-lg font-extrabold tracking-tight text-green-700 sm:block">HIMASI UBSI</a>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
     {{-- Sidebar Mobile (Aesthetic Version) --}}
     <div class="drawer-side z-[100]">
         <label for="mobile-drawer" class="drawer-overlay bg-black/40 backdrop-blur-sm"></label>
-        <aside class="menu p-6 w-80 min-h-full bg-white backdrop-blur-xl text-base-content">
+        <aside class="menu p-6 w-80 min-h-full bg-white/90 backdrop-blur-xl text-base-content">
             <div class="flex items-center gap-4 mb-8 px-2">
                 <img src="/assets/img/logo.png" class="w-12 h-12 rounded-2xl shadow-md" alt="Logo">
                 <span class="font-bold text-xl text-green-700">HIMASI UBSI</span>

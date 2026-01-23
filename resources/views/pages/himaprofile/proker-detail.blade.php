@@ -3,7 +3,7 @@
 @include('components.navbar')
 
 @section('body')
-    <div class="xl:px-60 px-6 pt-44 pb-32 bg-white">
+    <div class="xl:px-60 px-6 pt-32 pb-32 bg-white">
 
         {{-- Hero Header --}}
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

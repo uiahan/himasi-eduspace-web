@@ -4,7 +4,7 @@
 
 @section('body')
     {{-- Kotak Aspirasi Section --}}
-    <div class="min-h-screen xl:px-60 px-6 pb-32 pt-44 bg-white relative overflow-hidden">
+    <div class="min-h-screen xl:px-60 px-6 pb-32 pt-32 bg-white relative overflow-hidden">
         
         {{-- Background Decoration --}}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
@@ -27,7 +27,7 @@
             </div>
 
             {{-- Form Card --}}
-            <div class="bg-white rounded-[3rem] border border-gray-100 shadow-2xl shadow-gray-200/50 p-8 md:p-16 relative" data-aos="zoom-in-up" data-aos-duration="1000">
+            <div class="  relative" data-aos="zoom-in-up" data-aos-duration="1000">
                 <form action="{{ route('aspiration.store') }}" method="POST" class="space-y-10">
                     @csrf
                     
