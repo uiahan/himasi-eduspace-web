@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Himasi UBSI | @yield('title')</title>
+    <meta name="title" content="HIMASI UBSI - Himpunan Mahasiswa Sistem Informasi">
+    <meta name="description"
+        content="Wadah aspirasi dan kreativitas mahasiswa Sistem Informasi UBSI Sukabumi. Mari berkontribusi dan berkembang bersama kami.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="HIMASI UBSI | @yield('title')">
+    <meta property="og:description" content="Wadah aspirasi dan kreativitas mahasiswa Sistem Informasi UBSI Sukabumi.">
+    {{-- Gunakan foto formal organisasi, disarankan ukuran 1200x630px atau persegi --}}
+    <meta property="og:image" content="{{ asset('favicon.png') }}">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="HIMASI UBSI | @yield('title')">
+    <meta property="twitter:description"
+        content="Wadah aspirasi dan kreativitas mahasiswa Sistem Informasi UBSI Sukabumi.">
+    <meta property="twitter:image" content="{{ asset('favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -16,7 +33,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body> 
+<body>
     <div class="min-h-screen bg-white">
         @yield('body')
     </div>
