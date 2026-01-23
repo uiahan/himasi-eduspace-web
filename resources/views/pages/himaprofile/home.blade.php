@@ -157,25 +157,25 @@
                     data-aos-duration="1000">
                     Departemen Kami
                 </h1>
-                <p class="text-green-100/80 text-justify md:text-center mt-6 max-w-2xl mx-auto xl:text-lg font-light leading-relaxed" data-aos="fade-up"
-                    data-aos-duration="1200">
+                <p class="text-green-100/80 text-justify md:text-center mt-6 max-w-2xl mx-auto xl:text-lg font-light leading-relaxed"
+                    data-aos="fade-up" data-aos-duration="1200">
                     Bersinergi membangun mahasiswa Sistem Informasi yang <span class="text-white font-medium">aktif,
                         kreatif, dan berdaya saing</span> melalui kolaborasi antar departemen.
                 </p>
             </div>
 
-            <div class="grid xl:grid-cols-3 grid-cols-2 gap-6 xl:gap-12">
+            <div class="grid xl:grid-cols-3 grid-cols-1 gap-6 xl:gap-12">
                 @foreach ($departmentList as $item)
-                    <div class="group relative" data-aos="fade-up" data-aos-duration="{{ 1000 + $loop->index * 200 }}">
-                        {{-- Glow Effect dibelakang kartu saat hover --}}
+                    <a href="{{ route('department', $item->id) }}" class="group relative block" data-aos="fade-up"
+                        data-aos-duration="{{ 1000 + $loop->index * 200 }}">
+                        {{-- Glow Effect --}}
                         <div
                             class="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-3xl blur opacity-0 group-hover:opacity-30 transition duration-500">
                         </div>
 
                         {{-- Kartu Utama --}}
                         <div
-                            class="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 h-64 xl:h-72 flex flex-col items-center justify-center gap-6 
-                                hover:-translate-y-3 transition-all duration-500 shadow-2xl">
+                            class="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 h-64 xl:h-72 flex flex-col items-center justify-center gap-6 hover:-translate-y-3 transition-all duration-500 shadow-2xl">
 
                             {{-- Logo Container --}}
                             <div class="relative">
@@ -187,7 +187,6 @@
                                     alt="{{ $item->name }}">
                             </div>
 
-                            {{-- Nama Departemen (Muncul saat hover atau tetap ada dengan style minimalis) --}}
                             <div class="text-center">
                                 <span
                                     class="text-white font-bold text-sm xl:text-base tracking-wider uppercase opacity-80 group-hover:opacity-100 transition-opacity">
@@ -195,7 +194,7 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -225,7 +224,9 @@
 
         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 xl:gap-12">
             @foreach ($program as $item)
-                <div class="group relative bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100"
+                {{-- Ganti 'program.show' dengan nama route detail program kamu --}}
+                <a href="{{ route('program.show', $item->id) }}"
+                    class="group relative bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 block"
                     data-aos="fade-up" data-aos-duration="{{ 1000 + $loop->index * 200 }}">
 
                     {{-- Image Container --}}
@@ -233,7 +234,6 @@
                         <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
 
-                        {{-- Overlay Gradient on Image --}}
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         </div>
@@ -287,7 +287,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 
