@@ -3,10 +3,10 @@
 @include('components.navbar')
 
 @section('body')
-    <div class="min-h-screen bg-white px-6 sm:px-8 md:px-16 lg:px-32 xl:px-60 pt-32 pb-32">
+    <div class="min-h-screen bg-white px-6 sm:px-8 md:px-16 lg:px-32 xl:px-60 pt-32 xl:pt-44 pb-32">
 
         {{-- Section Header --}}
-        <div class="max-w-4xl mx-auto text-center space-y-6 mb-20">
+        <div class="max-w-4xl mx-auto md:text-center text-justify space-y-6 mb-20">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-black uppercase tracking-widest" data-aos="fade-down">
                 Grow With Us
             </div>

@@ -5,7 +5,7 @@
 @section('body')
 
     {{-- Header Section: About --}}
-    <section class="relative min-h-[70vh] flex items-center xl:px-60 px-6 pt-32 bg-white overflow-hidden">
+    <section class="relative min-h-[70vh] flex items-center xl:px-60 px-6 xl:pt-44 pt-32 bg-white overflow-hidden">
         {{-- Aksen Dekoratif --}}
         <div class="absolute top-0 right-0 w-96 h-96 bg-green-50 rounded-full blur-[100px] -z-10 opacity-60"></div>
         

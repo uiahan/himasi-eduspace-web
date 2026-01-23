@@ -4,9 +4,9 @@
 
 @section('body')
 
-    <div class="min-h-screen xl:px-60 lg:px-24 px-6 pt-32 pb-32 bg-white">
+    <div class="min-h-screen xl:px-60 lg:px-24 px-6 pt-32 xl:pt-44 pb-32 bg-white">
 
-        <div class="max-w-4xl mx-auto text-center space-y-6 mb-10">
+        <div class="max-w-4xl mx-auto xl:text-center text-justify space-y-6 mb-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-bold uppercase tracking-widest"
                 data-aos="fade-down">
                 Timeline & Activity

@@ -5,7 +5,7 @@
 @section('body')
 
     {{-- Hero Section Departemen --}}
-    <section class="relative xl:px-60 px-6 xl:pb-32 pb-20 pt-32 bg-white overflow-hidden">
+    <section class="relative xl:px-60 px-6 xl:pb-32 pb-20 pt-32 xl:pt-44 bg-white overflow-hidden">
         {{-- Background Glow --}}
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-green-50 rounded-full blur-[120px] -z-10 opacity-60"></div>
 
