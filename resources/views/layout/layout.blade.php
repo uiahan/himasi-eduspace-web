@@ -64,6 +64,9 @@
         @yield('body')
     </div>
 
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     {{-- Scripts --}}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -105,6 +108,47 @@
             })
         </script>
     @endif
+
+    <script>
+        const cursorDot = document.querySelector(".cursor-dot");
+        const cursorOutline = document.querySelector(".cursor-outline");
+
+        // Jalankan hanya jika layar di atas 1024px (Desktop)
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+
+            window.addEventListener("mousemove", function(e) {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                // Gerakkan titik inti
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Gerakkan outline dengan animasi halus
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, {
+                    duration: 500,
+                    fill: "forwards"
+                });
+            });
+
+            // Efek Membesar saat menyentuh link/tombol
+            const interactiveElements = document.querySelectorAll('a, button, .cursor-hover');
+
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.classList.add('cursor-active');
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(2)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.classList.remove('cursor-active');
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>

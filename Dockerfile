@@ -80,6 +80,7 @@ RUN printf '#!/bin/sh\n\
 set -e\n\
 chown -R www-data:www-data storage bootstrap/cache\n\
 chmod -R 775 storage bootstrap/cache\n\
+php artisan storage:link --force || true\n\
 php artisan config:clear\n\
 php artisan config:cache\n\
 php artisan route:cache\n\

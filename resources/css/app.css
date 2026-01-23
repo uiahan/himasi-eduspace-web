@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,8 +6,10 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans:
+        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
 @plugin "daisyui" {
@@ -16,6 +18,55 @@
 
 body {
     font-family: "Poppins", sans-serif;
+}
+
+/* Sembunyikan elemen kursor secara default (Mobile First) */
+.cursor-dot,
+.cursor-outline {
+    display: none;
+}
+
+/* Hanya tampilkan dan aktifkan styling kursor di Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .cursor-dot,
+    .cursor-outline {
+        display: block; /* Tampilkan kembali */
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #4ade80;
+        transition: width 0.3s, height 0.3s;
+    }
+
+    .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(74, 222, 128, 0.5);
+        z-index: 9998;
+        transition: all 0.15s ease-out;
+    }
+
+    /* Sembunyikan kursor asli hanya di desktop */
+    body, a, button {
+        cursor: none;
+    }
+
+    /* Efek aktif saat hover */
+    .cursor-active {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(74, 222, 128, 0.1);
+        border: 1px solid #4ade80;
+    }
 }
 
 html {
