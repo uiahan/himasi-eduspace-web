@@ -12,7 +12,7 @@
                     <div class="flex items-center gap-3">
                         <img src="/assets/img/logo.png" class="w-10 h-10 rounded-xl object-cover shadow-sm"
                             alt="Logo">
-                        <a class="md:text-xl text-lg font-extrabold tracking-tight text-green-700 sm:block">HIMASI UBSI</a>
+                        <a class="text-xl font-extrabold tracking-tight text-green-700 sm:block">HIMASI</a>
                     </div>
                 </div>
 
@@ -109,7 +109,7 @@
         <aside class="menu p-6 w-80 min-h-full bg-white/90 backdrop-blur-xl text-base-content">
             <div class="flex items-center gap-4 mb-8 px-2">
                 <img src="/assets/img/logo.png" class="w-12 h-12 rounded-2xl shadow-md" alt="Logo">
-                <span class="font-bold text-xl text-green-700">HIMASI UBSI</span>
+                <span class="font-bold text-xl text-green-700">HIMASI</span>
             </div>
 
             <ul class="space-y-2 text-md font-medium">

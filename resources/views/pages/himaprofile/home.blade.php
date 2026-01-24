@@ -26,14 +26,21 @@
                 </div>
 
                 {{-- Judul Utama --}}
-                <div class="text-white leading-[1.1]">
+                <div class="text-white leading-tight">
+                    {{-- Teks Himpunan Mahasiswa dibuat lebih kecil sedikit di mobile agar tidak makan tempat --}}
+                    <p data-aos="zoom-out-up" data-aos-duration="1000"
+                        class="text-lg md:text-2xl font-medium tracking-[0.2em] opacity-90 uppercase mb-2">
+                        Himpunan Mahasiswa
+                    </p>
+
                     <h1 data-aos="zoom-out-up" data-aos-duration="1200"
-                        class="md:text-5xl lg:text-7xl text-4xl font-black tracking-tighter drop-shadow-2xl">
-                        HIMPUNAN MAHASISWA
+                        class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter drop-shadow-2xl uppercase">
+                        Sistem Informasi
                     </h1>
+
                     <h1 data-aos="zoom-out-up" data-aos-duration="1500"
-                        class="md:text-5xl lg:text-7xl text-4xl font-black tracking-tighter mt-2 bg-linear-to-r from-green-600 to-green-700 bg-clip-text text-transparent drop-shadow-sm">
-                        SISTEM INFORMASI
+                        class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mt-1 bg-gradient-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent drop-shadow-sm uppercase">
+                        UBSI Sukabumi
                     </h1>
                 </div>
 
@@ -421,7 +428,8 @@
                             @csrf
 
                             <div class="space-y-2">
-                                <label class="text-xs font-bold text-green-300 uppercase tracking-widest ml-1">Nama (Opsional)</label>
+                                <label class="text-xs font-bold text-green-300 uppercase tracking-widest ml-1">Nama
+                                    (Opsional)</label>
                                 <input type="text" placeholder="Anonim" name="name"
                                     class="w-full bg-green-900/40 border border-green-700 rounded-2xl px-6 py-4 text-white focus:bg-green-900/60 focus:ring-2 focus:ring-green-400 outline-none transition-all placeholder:text-green-600" />
                             </div>
