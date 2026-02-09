@@ -3,10 +3,12 @@
 namespace App\Filament\Resources\Courses\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 
 class CoursesTable
@@ -15,23 +17,20 @@ class CoursesTable
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('title')
                     ->searchable(),
-                ImageColumn::make('photo')
+                ImageColumn::make('thumbnail')
                     ->disk('public')
                     ->visibility('public'),
-                TextColumn::make('video')
-                    ->searchable(),
-                TextColumn::make('program.name')
-                    ->label('program')
-                    ->searchable()
-                    ->sortable(),
+                ToggleColumn::make('is_active')
+                    ->label('Active')
             ])
             ->filters([
                 //
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

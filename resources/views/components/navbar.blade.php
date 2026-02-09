@@ -69,6 +69,18 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('recruitment') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                Kursus
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('recruitment') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                Berita
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('aspiration') }}"
                                 class="rounded-lg font-medium {{ request()->routeIs('aspiration') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                                 Kotak Aspirasi
@@ -153,6 +165,18 @@
                     <a href="{{ route('recruitment') }}"
                         class="py-3 rounded-xl {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : '' }}">
                         Perekrutan
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('recruitment') }}"
+                        class="py-3 rounded-xl {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : '' }}">
+                        Kursus
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('recruitment') }}"
+                        class="py-3 rounded-xl {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : '' }}">
+                        Berita
                     </a>
                 </li>
                 <li>

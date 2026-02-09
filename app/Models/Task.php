@@ -8,11 +8,18 @@ class Task extends Model
 {
     protected $guarded = ['id'];
 
-    public function course() {
+    public function course()
+    {
         return $this->belongsTo(Course::class);
     }
 
-    public function user() {
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }
