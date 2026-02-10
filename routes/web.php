@@ -39,6 +39,12 @@ route::prefix('courses')->controller(CourseController::class)->group(function ()
     route::get('/', 'index')->name('courses.index');
 });
 
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'showLoginForm')->name('login');
+    Route::post('/login', 'login')->name('login.post');
+    Route::post('/logout', 'logout')->name('logout')->middleware('auth');
+});
+
 Route::get('/health', function () {
     return response()->json([
         'status' => 'ok'
