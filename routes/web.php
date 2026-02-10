@@ -37,6 +37,8 @@ Route::get('/department/{department}', [DepartmentController::class, 'index'])->
 
 route::prefix('courses')->controller(CourseController::class)->group(function () {
     route::get('/', 'index')->name('courses.index');
+    route::get('/detail', 'show')->name('courses.show');
+    route::get('/detail/lesson', 'showLesson')->name('courses.lesson');
 });
 
 Route::controller(AuthController::class)->group(function () {

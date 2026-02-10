@@ -8,7 +8,7 @@
     <main class="min-h-screen">
         <section class="container mx-auto py-10">
             <section class="max-w-7xl mx-auto px-6 py-12">
-                {{-- Welcome Message --}}
+                {{-- Welcome Message
                 @auth
                     <div class="bg-green-50 border border-green-200 rounded-lg p-4 my-6 flex justify-between items-center">
                         <p class="text-green-800">
@@ -52,7 +52,7 @@
                             Login Sekarang
                         </a>
                     </div>
-                @endguest
+                @endguest --}}
 
                 {{-- Header with Search --}}
                 <div class="my-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">

@@ -12,4 +12,14 @@ class CourseController extends Controller
     {
         return view('pages.courses.index');
     }
+
+    public function show()
+    {
+        return view('pages.courses.detail-course');
+    }
+
+    public function showLesson()
+    {
+        return view('pages.courses.lesson');
+    }
 }
