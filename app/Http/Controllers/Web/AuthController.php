@@ -9,25 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function showLoginForm()
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required',
-            'phone' => 'required|string',
-            'role' => 'required|in:admin,user',
-        ]);
-
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
-            'phone' => $validatedData['phone'],
-            'role' => 'user',
-        ]);
-
-        return response()->json(['message' => 'Berhasil membuat akun!', 'user' => $user], 201);
+        return view('auth.login');
     }
 
     public function login(Request $request)
@@ -37,27 +21,24 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        // Jika role user adalah admin, tolak login
-        $user = User::where('email', $credentials['email'])->first();
-        if ($user && $user->role === 'admin') {
-            return response()->json(['message' => 'Akses admin ditolak'], 403);
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard');
         }
 
-        if (Auth::attempt($credentials)) {
-            $token = $request->user()->createToken('auth_token')->plainTextToken;
-
-            return response()->json([
-                'access_token' => $token,
-                'token_type' => 'Bearer',
-            ]);
-        }
-
-        return response()->json(['message' => 'Email atau password salah'], 401);
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ])->onlyInput('email');
     }
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logout berhasil']);
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

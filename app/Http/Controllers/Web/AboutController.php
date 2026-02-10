@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $organization = Organization::where('status', 'active')->first();
-        $departmentList = Department::all();
 
-        return view('pages.himaprofile.about', compact('organization', 'departmentList'));
+        return view('pages.himaprofile.about', compact('organization'));
     }
 }

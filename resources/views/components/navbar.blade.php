@@ -69,15 +69,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('recruitment') }}"
-                                class="rounded-lg font-medium {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                            <a href="{{ route('courses.index') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('courses.index') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                                 Kursus
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('recruitment') }}"
-                                class="rounded-lg font-medium {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
-                                Berita
                             </a>
                         </li>
                         <li>

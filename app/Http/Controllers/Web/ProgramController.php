@@ -9,9 +9,8 @@ use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
-    public function index(Request $request) {
-        $departmentList = Department::all();
-
+    public function index(Request $request)
+    {
         $program = Program::with('department')
             ->when($request->department, function ($query) use ($request) {
                 $query->where('department_id', $request->department);
@@ -20,13 +19,13 @@ class ProgramController extends Controller
             ->paginate(9)
             ->withQueryString();
 
-        return view('pages.himaprofile.proker', compact('program', 'departmentList'));
+        return view('pages.himaprofile.proker', compact('program'));
     }
 
-    public function show(Program $program) {
-        $departmentList = Department::all();
+    public function show(Program $program)
+    {
         $program->load('department');
 
-        return view('pages.himaprofile.proker-detail', compact('program', 'departmentList'));
+        return view('pages.himaprofile.proker-detail', compact('program'));
     }
 }
