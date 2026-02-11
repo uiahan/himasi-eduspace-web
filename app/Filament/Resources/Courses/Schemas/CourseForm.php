@@ -24,7 +24,8 @@ class CourseForm
                     ->columnSpanFull(),
                 \Filament\Forms\Components\RichEditor::make('description')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->disableAllToolbarButtons(false),
             ]);
     }
 }

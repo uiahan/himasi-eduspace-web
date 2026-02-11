@@ -11,12 +11,6 @@ use App\Http\Controllers\Web\RecruitmentController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'auth', 'controller' => AuthController::class], function () {
-    Route::post('/login', 'login')->name('auth.login');
-    Route::post('/logout', 'logout')->name('auth.logout')->middleware('auth:sanctum');
-    Route::post('/register', 'register')->name('auth.register');
-});
-
 Route::group(['prefix' => 'aspiration', 'controller' => AspirationController::class], function () {
     Route::get('/', 'index')->name('aspiration');
     Route::post('/store', 'store')->name('aspiration.store');
@@ -37,15 +31,10 @@ Route::get('/department/{department}', [DepartmentController::class, 'index'])->
 
 route::prefix('courses')->controller(CourseController::class)->group(function () {
     route::get('/', 'index')->name('courses.index');
-    route::get('/detail', 'show')->name('courses.show');
-    route::get('/detail/lesson', 'showLesson')->name('courses.lesson');
+    route::get('/{course}', 'show')->name('courses.show');
+    route::get('/{course}/{lesson}', 'showLesson')->name('courses.lesson');
 });
 
-Route::controller(AuthController::class)->group(function () {
-    Route::get('/login', 'showLoginForm')->name('login');
-    Route::post('/login', 'login')->name('login.post');
-    Route::post('/logout', 'logout')->name('logout')->middleware('auth');
-});
 
 Route::get('/health', function () {
     return response()->json([

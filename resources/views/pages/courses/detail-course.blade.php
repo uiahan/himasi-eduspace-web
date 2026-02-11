@@ -12,14 +12,14 @@
 
             <!-- Thumbnail -->
             <div class="rounded-xl overflow-hidden shadow-sm border border-gray-200 bg-black">
-                <img src="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1600"
-                    class="w-full h-[360px] object-cover" alt="Course Thumbnail">
+                <img src="{{ asset('storage/' . $course->thumbnail) }}" class="w-full h-[360px] object-cover"
+                    alt="Course Thumbnail">
             </div>
 
             <!-- Title -->
             <div>
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900">
-                    Mastering UI/UX Design: From Zero to Professional Case Studies
+                    {{ $course->title }}
                 </h1>
             </div>
 
@@ -31,18 +31,9 @@
             </div>
 
             <!-- Deskripsi -->
-            <div class="text-gray-700 leading-relaxed space-y-4 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <p>
-                    Learn the fundamentals of UI/UX design, wireframing, prototyping using Figma,
-                    and building a professional portfolio with real-world projects.
-                </p>
+            <div class="prose prose-lg prose-slate max-w-none">
+                {!! $course->description !!}
 
-                <ul class="list-disc ml-5 space-y-2">
-                    <li>Design thinking & UX fundamentals</li>
-                    <li>Wireframing & prototyping with Figma</li>
-                    <li>Usability testing & case studies</li>
-                    <li>Build a real portfolio</li>
-                </ul>
             </div>
 
         </section>
@@ -58,26 +49,26 @@
 
                 <!-- List Materi -->
                 <div class="space-y-3">
+                    @forelse ($course->lessons as $item)
+                        <a href="{{ route('courses.lesson', ['course' => $course->id, 'lesson' => $item->id]) }}"
+                            class="block flex items-center gap-3 p-3 border border-gray-200 rounded-lg 
+                                              hover:border-green-500 hover:bg-green-50 transition">
 
-                    <a href="#"
-                        class="block flex items-center gap-3 p-3 border border-gray-200 rounded-lg 
-                      hover:border-green-500 hover:bg-green-50 transition">
+                            <span
+                                class="w-7 h-7 flex items-center justify-center rounded-full bg-gray-100 font-semibold text-sm text-gray-700">
+                                {{ $loop->iteration }}
+                            </span>
 
-                        <span
-                            class="w-7 h-7 flex items-center justify-center rounded-full bg-gray-100 font-semibold text-sm text-gray-700">
-                            2
-                        </span>
+                            <span class="flex-1 text-sm font-medium text-gray-700">
+                                {{ $item->title }}
+                            </span>
 
-                        <span class="flex-1 text-sm font-medium text-gray-700">
-                            Design Fundamentals
-                        </span>
-
-                    </a>
-
+                        </a>
+                    @empty
+                        <p class="text-gray-500 text-sm">Tidak ada materi kursus.</p>
+                    @endforelse
                 </div>
-
             </div>
-
         </aside>
     </main>
 
