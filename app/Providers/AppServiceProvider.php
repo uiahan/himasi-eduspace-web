@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Department;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') !== 'local') {
             URL::forceScheme('https');
         }
+
+        View::composer('*', function ($view) {
+            $departments = Department::orderBy('name')->get();
+            $view->with('departmentList', $departments);
+        });
     }
 }

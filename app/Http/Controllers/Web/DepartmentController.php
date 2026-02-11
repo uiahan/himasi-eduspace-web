@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    public function index(Department $department) {
-        $departmentList = Department::all();
+    public function index(Department $department)
+    {
         $department->load('staff');
-        return view("pages.himaprofile.department", compact("department", 'departmentList'));
+        return view("pages.himaprofile.department", compact("department"));
     }
 }

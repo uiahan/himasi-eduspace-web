@@ -11,12 +11,16 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $organization = Organization::where('status', 'active')->first();
-        $departmentList = Department::all();
-        $program = Program::with('department')->orderByDesc('created_at')->limit(6)->get();
-        $gallery = Gallery::limit(6)->get();
+        $programs = Program::with('department')->latest()->take(6)->get();
+        $galleries = Gallery::latest()->take(6)->get();
 
-        return view('pages.himaprofile.home', compact('organization', 'departmentList', 'program', 'gallery'));
+        return view('pages.himaprofile.home', [
+            'organization' => $organization,
+            'program' => $programs,
+            'gallery' => $galleries,
+        ]);
     }
 }

@@ -12,28 +12,20 @@ class CourseForm
     {
         return $schema
             ->components([
-                TextInput::make('name')
-                    ->required(),
-                \Filament\Forms\Components\FileUpload::make('photo')
+                TextInput::make('title')
+                    ->required()
+                    ->columnSpanFull(),
+                \Filament\Forms\Components\FileUpload::make('thumbnail')
                     ->image()
                     ->disk('public')
                     ->visibility('public')
-                    ->directory('logo-departement')
-                    ->required(),
+                    ->directory('thumbnail-course')
+                    ->required()
+                    ->columnSpanFull(),
                 \Filament\Forms\Components\RichEditor::make('description')
                     ->required()
-                    ->columnSpanFull(),
-                TextInput::make('video')
-                    ->required()->columnSpanFull(),
-                \Filament\Forms\Components\RichEditor::make('content')
-                    ->required()
-                    ->columnSpanFull(),
-                \Filament\Forms\Components\FileUpload::make('file')
-                    ->required(),
-                \Filament\Forms\Components\Select::make('program_id')
-                    ->required()
-                    ->options(\App\Models\Program::pluck('name', 'id')->toArray())
-                    ->searchable(),
+                    ->columnSpanFull()
+                    ->disableAllToolbarButtons(false),
             ]);
     }
 }

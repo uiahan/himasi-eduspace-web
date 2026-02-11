@@ -13,8 +13,8 @@ class Course extends Model
         return $this->hasMany(Task::class);
     }
 
-    public function program()
+    public function lessons()
     {
-        return $this->belongsTo(Program::class);
+        return $this->hasMany(Lesson::class);
     }
 }
