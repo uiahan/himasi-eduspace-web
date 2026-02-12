@@ -76,6 +76,7 @@ CMD curl -f http://localhost/health || exit 1
 ###################################
 # Start Script
 ###################################
+# Pastikan tidak ada spasi aneh di akhir baris printf
 RUN printf '#!/bin/sh\n\
 set -e\n\
 chown -R www-data:www-data storage bootstrap/cache\n\
@@ -91,6 +92,14 @@ echo "Running migrations..."\n\
 php artisan migrate --force\n\
 \n\
 php artisan storage:link --force || true\n\
-' > /usr/local/bin/start-app.sh
+php artisan config:cache\n\
+php artisan route:cache\n\
+php artisan view:cache\n\
+\n\
+exec /usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf\n' > /usr/local/bin/start-app.sh
 
-CMD ["/usr/local/bin/start-app.sh"]
+# PENTING: Beri akses eksekusi secara eksplisit
+RUN chmod +x /usr/local/bin/start-app.sh
+
+# Gunakan ENTRYPOINT agar script selalu jalan
+ENTRYPOINT ["/usr/local/bin/start-app.sh"]
