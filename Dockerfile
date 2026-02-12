@@ -81,16 +81,16 @@ set -e\n\
 chown -R www-data:www-data storage bootstrap/cache\n\
 chmod -R 775 storage bootstrap/cache\n\
 \n\
-# Jalankan migrasi otomatis\n\
+echo "Waiting for database..."\n\
+until nc -z $DB_HOST ${DB_PORT:-3306}; do\n\
+  echo "Database is unavailable - sleeping"\n\
+  sleep 2\n\
+done\n\
+\n\
 echo "Running migrations..."\n\
 php artisan migrate --force\n\
 \n\
 php artisan storage:link --force || true\n\
-php artisan config:clear\n\
-php artisan config:cache\n\
-php artisan route:cache\n\
-php artisan view:cache\n\
-/usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf\n' > /usr/local/bin/start-app.sh \
-&& chmod +x /usr/local/bin/start-app.sh
+' > /usr/local/bin/start-app.sh
 
 CMD ["/usr/local/bin/start-app.sh"]
