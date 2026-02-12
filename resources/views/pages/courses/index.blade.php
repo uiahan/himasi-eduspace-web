@@ -40,7 +40,7 @@
 
                 {{-- Course Cards --}}
                 <div class="grid md:grid-cols-3 gap-6">
-                    @foreach ($courses as $course)
+                    @forelse ($courses as $course)
                         <div
                             class="bg-gray-50 rounded-xl border border-gray-200 hover:border-gray-300 shadow-md hover:shadow-lg transition overflow-hidden flex flex-col">
 
@@ -70,7 +70,11 @@
                                 </a>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-span-full text-center py-10">
+                            <p class="text-gray-500">Tidak ada kursus yang ditemukan.</p>
+                        </div>
+                    @endforelse
 
                 </div>
 

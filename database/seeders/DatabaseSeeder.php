@@ -86,57 +86,57 @@ class DatabaseSeeder extends Seeder
             }
         }
         // Courses -> Lessons -> Tasks (tasks require users and courses)
-        $courses = [
-            [
-                'title' => 'Laravel Basics',
-                'description' => 'Learn the basics of Laravel framework',
-            ],
-            [
-                'title' => 'PHP Fundamentals',
-                'description' => 'Master the fundamentals of PHP programming',
-            ],
-            [
-                'title' => 'Web Design',
-                'description' => 'Introduction to modern web design principles',
-            ],
-        ];
+        // $courses = [
+        //     [
+        //         'title' => 'Laravel Basics',
+        //         'description' => 'Learn the basics of Laravel framework',
+        //     ],
+        //     [
+        //         'title' => 'PHP Fundamentals',
+        //         'description' => 'Master the fundamentals of PHP programming',
+        //     ],
+        //     [
+        //         'title' => 'Web Design',
+        //         'description' => 'Introduction to modern web design principles',
+        //     ],
+        // ];
 
-        $courseModels = [];
-        foreach ($courses as $courseData) {
-            $courseModels[] = Course::create([
-                'title' => $courseData['title'],
-                'thumbnail' => 'logo-kabinet/01KH0TEZJ8HC1DS81CJ59PG7F5.png',
-                'description' => $courseData['description'],
-                'is_active' => true,
-            ]);
-        }
+        // $courseModels = [];
+        // foreach ($courses as $courseData) {
+        //     $courseModels[] = Course::create([
+        //         'title' => $courseData['title'],
+        //         'thumbnail' => 'logo-kabinet/01KH0TEZJ8HC1DS81CJ59PG7F5.png',
+        //         'description' => $courseData['description'],
+        //         'is_active' => true,
+        //     ]);
+        // }
 
-        // Create lessons for each course
-        foreach ($courseModels as $course) {
-            for ($i = 1; $i <= 3; $i++) {
-                Lesson::create([
-                    'course_id' => $course->id,
-                    'title' => "{$course->title} Lesson $i",
-                    'content' => "Content for {$course->title} Lesson $i.",
-                    'url_video' => null,
-                ]);
-            }
-        }
+        // // Create lessons for each course
+        // foreach ($courseModels as $course) {
+        //     for ($i = 1; $i <= 3; $i++) {
+        //         Lesson::create([
+        //             'course_id' => $course->id,
+        //             'title' => "{$course->title} Lesson $i",
+        //             'content' => "Content for {$course->title} Lesson $i.",
+        //             'url_video' => null,
+        //         ]);
+        //     }
+        // }
 
         // create a few users via factory for demo students
-        $students = User::factory()->count(10)->create();
+        // $students = User::factory()->count(10)->create();
 
-        // create tasks (submissions) for each student and each course
-        foreach ($students as $student) {
-            foreach ($courseModels as $course) {
-                Task::create([
-                    'course_id' => $course->id,
-                    'user_id' => $student->id,
-                    'url_submission' => "https://example.com/submission/{$student->id}-{$course->id}",
-                    'description' => "Assignment submission for {$course->title} by {$student->name}",
-                ]);
-            }
-        }
+        // // create tasks (submissions) for each student and each course
+        // foreach ($students as $student) {
+        //     foreach ($courseModels as $course) {
+        //         Task::create([
+        //             'course_id' => $course->id,
+        //             'user_id' => $student->id,
+        //             'url_submission' => "https://example.com/submission/{$student->id}-{$course->id}",
+        //             'description' => "Assignment submission for {$course->title} by {$student->name}",
+        //         ]);
+        //     }
+        // }
 
         // Create 10 gallery entries
         for ($i = 1; $i <= 10; $i++) {
