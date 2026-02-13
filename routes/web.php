@@ -26,7 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tentang', [AboutController::class, 'index'])->name('about');
 Route::get('/proker', [ProgramController::class, 'index'])->name('program');
 Route::get('/proker/{program}', [ProgramController::class, 'show'])->name('program.show');
-Route::get('/department/{department}', [DepartmentController::class, 'index'])->name('department');
+Route::get('/department/{department}', [DepartmentController::class, 'show'])->name('department');
 
 
 route::prefix('courses')->controller(CourseController::class)->group(function () {

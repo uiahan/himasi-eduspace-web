@@ -47,8 +47,8 @@
                                 class="dropdown-content z-[100] menu p-2 shadow-2xl bg-white border border-gray-100 rounded-2xl w-56 mt-0">
                                 @foreach ($departmentList as $item)
                                     <li>
-                                        <a href="{{ route('department', $item->id) }}"
-                                            class="rounded-xl py-3 {{ request()->fullUrlIs(route('department', $item->id)) ? 'bg-green-50 text-green-700 font-bold' : 'hover:bg-green-200' }}">
+                                        <a href="{{ route('department', $item->slug) }}"
+                                            class="rounded-xl py-3 {{ request()->fullUrlIs(route('department', $item->slug)) ? 'bg-green-50 text-green-700 font-bold' : 'hover:bg-green-200' }}">
                                             {{ $item->name }}
                                         </a>
                                     </li>
@@ -140,8 +140,8 @@
                         <ul class="mt-2 space-y-1 ml-4 border-l-2 border-green-100">
                             @foreach ($departmentList as $item)
                                 <li>
-                                    <a href="{{ route('department', $item->id) }}"
-                                        class="rounded-lg {{ request()->fullUrlIs(route('department', $item->id)) ? 'text-green-700 font-bold bg-green-50' : '' }}">
+                                    <a href="{{ route('department', $item->slug) }}"
+                                        class="rounded-lg {{ request()->fullUrlIs(route('department', $item->slug)) ? 'text-green-700 font-bold bg-green-50' : '' }}">
                                         {{ $item->name }}
                                     </a>
                                 </li>
