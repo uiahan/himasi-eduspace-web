@@ -22,7 +22,7 @@ class CourseForm
                     ->directory('thumbnail-course')
                     ->required()
                     ->columnSpanFull(),
-                \Filament\Forms\Components\RichEditor::make('description')
+                \Filament\Forms\Components\RichEditor::make('content')
                     ->required()
                     ->columnSpanFull()
                     ->disableAllToolbarButtons(false),
