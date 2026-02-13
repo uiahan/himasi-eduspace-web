@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
 use App\Models\Department;
+use App\Models\Lesson;
 use App\Models\Program;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -47,6 +49,38 @@ class FillDepartmentSlugs extends Seeder
 
             $program->slug = $slug;
             $program->save();
+        }
+
+        $courses = Course::whereNull('slug')->get();
+        foreach ($courses as $course) {
+            $slug = Str::slug($course->title);
+            $originalSlug = $slug;
+            $count = 1;
+
+            // Pastikan slug unik
+            while (Course::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $course->slug = $slug;
+            $course->save();
+        }
+
+        $lessons = Lesson::whereNull('slug')->get();
+        foreach ($lessons as $lesson) {
+            $slug = Str::slug($lesson->title);
+            $originalSlug = $slug;
+            $count = 1;
+
+            // Pastikan slug unik
+            while (Lesson::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $lesson->slug = $slug;
+            $lesson->save();
         }
     }
 }

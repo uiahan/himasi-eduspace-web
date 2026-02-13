@@ -64,7 +64,7 @@
                                 </div>
 
                                 <!-- BUTTON pinned to bottom -->
-                                <a href="{{ route('courses.show', $course->id) }}"
+                                <a href="{{ route('courses.show', $course->slug) }}"
                                     class="mt-auto block w-full bg-green-600 hover:bg-green-700 text-white text-center font-medium py-2.5 rounded-lg transition">
                                     Masuk Kursus
                                 </a>

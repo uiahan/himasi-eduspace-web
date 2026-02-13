@@ -7,6 +7,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class LessonForm
 {
@@ -18,7 +19,15 @@ class LessonForm
                     ->relationship('course', 'title')
                     ->required(),
                 TextInput::make('title')
-                    ->required(),
+                    ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
+                    ->columnSpanFull(),
+                TextInput::make('slug')
+                    ->required()
+                    ->unique(ignoreRecord: true)
+                    ->helperText('Auto-generated dari title, harus unik')
+                    ->columnSpanFull(),
                 RichEditor::make('content')
                     ->required()
                     ->columnSpanFull()

@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Courses\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class CourseForm
 {
@@ -14,6 +15,13 @@ class CourseForm
             ->components([
                 TextInput::make('title')
                     ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
+                    ->columnSpanFull(),
+                TextInput::make('slug')
+                    ->required()
+                    ->unique(ignoreRecord: true)
+                    ->helperText('Auto-generated dari title, harus unik')
                     ->columnSpanFull(),
                 \Filament\Forms\Components\FileUpload::make('thumbnail')
                     ->image()
