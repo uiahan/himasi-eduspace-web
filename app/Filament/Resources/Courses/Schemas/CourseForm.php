@@ -12,7 +12,7 @@ class CourseForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
+                TextInput::make('name')
                     ->required()
                     ->columnSpanFull(),
                 \Filament\Forms\Components\FileUpload::make('thumbnail')

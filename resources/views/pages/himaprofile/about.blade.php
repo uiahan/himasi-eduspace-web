@@ -10,6 +10,7 @@
         <div class="absolute top-0 right-0 w-96 h-96 bg-green-50 rounded-full blur-[100px] -z-10 opacity-60"></div>
         
         <div class="xl:flex gap-24 items-center w-full">
+            
             {{-- Bagian Kiri: Visual (Logo/Image) --}}
             <div class="relative xl:w-1/2 group mb-12 xl:mb-0" data-aos="fade-right">
                 <div class="absolute -inset-4 bg-green-100/50 rounded-[3rem] scale-95 group-hover:scale-100 transition-all duration-500 -z-10"></div>
