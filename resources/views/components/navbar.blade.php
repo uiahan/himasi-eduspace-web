@@ -163,7 +163,7 @@
                 </li>
                 <li>
                     <a href="{{ route('courses.index') }}"
-                        class="py-3 px-4 rounded-lg {{ request()->routeIs('coursgges*') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('courses*') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                         Kursus
                     </a>
                 </li>
