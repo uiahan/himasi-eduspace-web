@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Department;
 use App\Models\Program;
 use Illuminate\Http\Request;
 

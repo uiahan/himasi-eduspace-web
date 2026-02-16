@@ -58,14 +58,14 @@
 
                             {{-- Image --}}
                             <div class="relative h-64 overflow-hidden">
-                                <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
+                                <img src="{{ $item->photo ? asset('storage/' . $item->photo) : 'https://placehold.co/200x400?text=' . urlencode($item->name) }}"
+                                    alt="{{ $item->name }}"
                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-
                                 {{-- Floating Badge --}}
                                 <div class="absolute top-6 left-6">
                                     <span
                                         class="px-4 py-2 bg-white/90 backdrop-blur-md text-green-800 text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg">
-                                        {{ $item->department->name }}
+                                        {{ Str::limit($item->department->name, 10, '...') }}
                                     </span>
                                 </div>
                             </div>
@@ -78,7 +78,9 @@
                                 </h2>
 
                                 <div class="text-gray-500 text-sm leading-relaxed line-clamp-3 font-light">
-                                    {!! $item->description !!}
+                                    {!! trim(strip_tags($item->description)) !== ''
+                                        ? Str::limit($item->description, 30, '...')
+                                        : 'Tidak ada deskripsi untuk program ini.' !!}
                                 </div>
 
                                 {{-- Footer Info --}}
@@ -86,11 +88,13 @@
                                     class="mt-auto pt-6 border-t border-gray-50 flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-gray-400">
                                     <div class="flex items-center gap-2">
                                         <span class="text-green-600 text-base">📍</span>
-                                        <span class="line-clamp-1">{!! $item->location !!}</span>
+                                        <span class="line-clamp-1">
+                                            {!! trim(strip_tags($item->location)) !== '' ? Str::limit($item->location, 30, '...') : '-' !!}
+                                        </span>
                                     </div>
                                     <div class="flex items-center gap-2 whitespace-nowrap">
                                         <span class="text-green-600 text-base">📅</span>
-                                        {{ $item->date }}
+                                        {{ $item->date ?? '-' }}
                                     </div>
                                 </div>
                             </div>

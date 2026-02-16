@@ -80,6 +80,12 @@
                                 Kotak Aspirasi
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('galleries') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('galleries') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                Galeri
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -171,6 +177,12 @@
                     <a href="{{ route('aspiration') }}"
                         class="py-3 px-4 rounded-lg {{ request()->routeIs('aspiration') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                         Kotak Aspirasi
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('galleries') }}"
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('galleries') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                        Galeri
                     </a>
                 </li>
             </ul>

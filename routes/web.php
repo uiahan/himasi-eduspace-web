@@ -27,6 +27,7 @@ Route::get('/tentang', [AboutController::class, 'index'])->name('about');
 Route::get('/proker', [ProgramController::class, 'index'])->name('program');
 Route::get('/proker/{program}', [ProgramController::class, 'show'])->name('program.show');
 Route::get('/department/{department}', [DepartmentController::class, 'show'])->name('department');
+Route::get('/galleries', [HomeController::class, 'galleries'])->name('galleries');
 
 
 route::prefix('courses')->controller(CourseController::class)->group(function () {

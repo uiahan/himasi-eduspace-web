@@ -128,6 +128,7 @@
                         data-aos-duration="1600">
                         <div class="xl:line-clamp-6 line-clamp-none">
                             {!! $organization->about !!}
+
                         </div>
                     </div>
 
@@ -249,7 +250,7 @@
                         <div class="absolute top-5 left-5">
                             <span
                                 class="px-4 py-2 bg-white/90 backdrop-blur-md text-green-800 text-xs font-bold rounded-xl shadow-lg uppercase tracking-wider">
-                                {{ $item->department->name }}
+                                {{ Str::limit($item->department->name, 10, '...') }}
                             </span>
                         </div>
                     </div>
@@ -339,7 +340,7 @@
         </div>
 
         {{-- Gallery Grid - Modern Bento Style --}}
-        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" data-aos="fade-up" data-aos-duration="1000">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 space-y-6" data-aos="fade-up" data-aos-duration="1000">
             @foreach ($gallery as $item)
                 <div
                     class="relative group overflow-hidden rounded-[2rem] break-inside-avoid shadow-sm hover:shadow-2xl transition-all duration-500">

@@ -35,6 +35,8 @@
                 <li><a href="{{ route('about') }}" class="hover:text-white transition-colors">Tentang Kami</a></li>
                 <li><a href="{{ route('program') }}" class="hover:text-white transition-colors">Program Kerja</a></li>
                 <li><a href="{{ route('recruitment') }}" class="hover:text-white transition-colors">Perekrutan</a></li>
+                <li><a href="{{ route('courses.index') }}" class="hover:text-white transition-colors">Kursus</a></li>
+                <li><a href="{{ route('galleries') }}" class="hover:text-white transition-colors">Galeri</a></li>
             </ul>
         </div>
 
