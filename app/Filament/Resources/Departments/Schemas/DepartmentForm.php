@@ -9,6 +9,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class DepartmentForm
 {
@@ -22,8 +23,16 @@ class DepartmentForm
                     ->visibility('public')
                     ->directory('logo-departement')
                     ->required(),
+
                 TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state))),
+
+                TextInput::make('slug')
+                    ->required()
+                    ->unique(ignoreRecord: true)
+                    ->helperText('Auto-generated dari name, harus unik'),
                 RichEditor::make('about')
                     ->required()
                     ->columnSpanFull(),

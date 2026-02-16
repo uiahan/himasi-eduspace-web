@@ -37,9 +37,9 @@
                     </a>
 
                     @foreach ($departmentList as $dept)
-                        <a href="{{ route('program', ['department' => $dept->id]) }}"
+                        <a href="{{ route('program', ['department' => $dept->slug]) }}"
                             class="px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-[13px] lg:text-sm font-bold transition-all duration-300 whitespace-nowrap
-                    {{ request('department') == $dept->id
+                    {{ request('department') == $dept->slug
                         ? 'bg-green-700 text-white shadow-lg shadow-green-200'
                         : 'text-gray-500 hover:text-green-700 hover:bg-white' }}">
                             {{ $dept->name }}
@@ -52,20 +52,20 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
             @foreach ($program as $item)
                 <div class="group" data-aos="fade-up" data-aos-duration="{{ 1000 + $loop->index * 100 }}">
-                    <a href="{{ route('program.show', $item->id) }}" class="block h-full">
+                    <a href="{{ route('program.show', $item->slug) }}" class="block h-full">
                         <div
                             class="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col">
 
                             {{-- Image --}}
                             <div class="relative h-64 overflow-hidden">
-                                <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
+                                <img src="{{ $item->photo ? asset('storage/' . $item->photo) : 'https://placehold.co/200x400?text=' . urlencode($item->name) }}"
+                                    alt="{{ $item->name }}"
                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-
                                 {{-- Floating Badge --}}
                                 <div class="absolute top-6 left-6">
                                     <span
                                         class="px-4 py-2 bg-white/90 backdrop-blur-md text-green-800 text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg">
-                                        {{ $item->department->name }}
+                                        {{ Str::limit($item->department->name, 10, '...') }}
                                     </span>
                                 </div>
                             </div>
@@ -78,7 +78,9 @@
                                 </h2>
 
                                 <div class="text-gray-500 text-sm leading-relaxed line-clamp-3 font-light">
-                                    {!! $item->description !!}
+                                    {!! trim(strip_tags($item->description)) !== ''
+                                        ? Str::limit($item->description, 30, '...')
+                                        : 'Tidak ada deskripsi untuk program ini.' !!}
                                 </div>
 
                                 {{-- Footer Info --}}
@@ -86,11 +88,13 @@
                                     class="mt-auto pt-6 border-t border-gray-50 flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-gray-400">
                                     <div class="flex items-center gap-2">
                                         <span class="text-green-600 text-base">📍</span>
-                                        <span class="line-clamp-1">{!! $item->location !!}</span>
+                                        <span class="line-clamp-1">
+                                            {!! trim(strip_tags($item->location)) !== '' ? Str::limit($item->location, 30, '...') : '-' !!}
+                                        </span>
                                     </div>
                                     <div class="flex items-center gap-2 whitespace-nowrap">
                                         <span class="text-green-600 text-base">📅</span>
-                                        {{ $item->date }}
+                                        {{ $item->date ?? '-' }}
                                     </div>
                                 </div>
                             </div>

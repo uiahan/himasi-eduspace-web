@@ -50,7 +50,7 @@
                 <!-- List Materi -->
                 <div class="space-y-3">
                     @forelse ($course->lessons as $item)
-                        <a href="{{ route('courses.lesson', ['course' => $course->id, 'lesson' => $item->id]) }}"
+                        <a href="{{ route('courses.lesson', ['course' => $course->slug, 'lesson' => $item->slug]) }}"
                             class="block flex items-center gap-3 p-3 border border-gray-200 rounded-lg 
                                               hover:border-green-500 hover:bg-green-50 transition">
 

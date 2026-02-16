@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Department;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
@@ -13,7 +12,9 @@ class ProgramController extends Controller
     {
         $program = Program::with('department')
             ->when($request->department, function ($query) use ($request) {
-                $query->where('department_id', $request->department);
+                $query->whereHas('department', function ($dept) use ($request) {
+                    $dept->where('slug', $request->department);
+                });
             })
             ->latest()
             ->paginate(9)

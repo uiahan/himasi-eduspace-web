@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    public function index(Department $department)
+    public function show(Department $department)
     {
         $department->load('staff');
         return view("pages.himaprofile.department", compact("department"));

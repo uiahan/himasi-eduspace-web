@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Galleries\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class GalleryForm
@@ -18,6 +19,11 @@ class GalleryForm
                     ->directory('gallery-himasi')
                     ->visibility('public')
                     ->required(),
+                TextInput::make('desc')
+                    ->label('Deskripsi')
+                    ->maxLength(255)
+                    ->columnSpanFull()
+                    ->nullable(),
             ]);
     }
 }

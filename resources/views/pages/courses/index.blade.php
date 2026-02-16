@@ -40,7 +40,7 @@
 
                 {{-- Course Cards --}}
                 <div class="grid md:grid-cols-3 gap-6">
-                    @foreach ($courses as $course)
+                    @forelse ($courses as $course)
                         <div
                             class="bg-gray-50 rounded-xl border border-gray-200 hover:border-gray-300 shadow-md hover:shadow-lg transition overflow-hidden flex flex-col">
 
@@ -64,13 +64,17 @@
                                 </div>
 
                                 <!-- BUTTON pinned to bottom -->
-                                <a href="{{ route('courses.show', $course->id) }}"
+                                <a href="{{ route('courses.show', $course->slug) }}"
                                     class="mt-auto block w-full bg-green-600 hover:bg-green-700 text-white text-center font-medium py-2.5 rounded-lg transition">
                                     Masuk Kursus
                                 </a>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-span-full text-center py-10">
+                            <p class="text-gray-500">Tidak ada kursus yang ditemukan.</p>
+                        </div>
+                    @endforelse
 
                 </div>
 

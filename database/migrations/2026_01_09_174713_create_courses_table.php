@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // balikin column dulu
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('thumbnail')->nullable();
+            $table->string('name');
+            $table->string('photo')->nullable();
             $table->text('description');
-            $table->boolean('is_active')->default(true);
+            $table->string('video')->nullable();
+            $table->text('content');
+            $table->string('file')->nullable();
+            $table->foreignId('program_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

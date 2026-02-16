@@ -47,8 +47,8 @@
                                 class="dropdown-content z-[100] menu p-2 shadow-2xl bg-white border border-gray-100 rounded-2xl w-56 mt-0">
                                 @foreach ($departmentList as $item)
                                     <li>
-                                        <a href="{{ route('department', $item->id) }}"
-                                            class="rounded-xl py-3 {{ request()->fullUrlIs(route('department', $item->id)) ? 'bg-green-50 text-green-700 font-bold' : 'hover:bg-green-200' }}">
+                                        <a href="{{ route('department', $item->slug) }}"
+                                            class="rounded-xl py-3 {{ request()->fullUrlIs(route('department', $item->slug)) ? 'bg-green-50 text-green-700 font-bold' : 'hover:bg-green-200' }}">
                                             {{ $item->name }}
                                         </a>
                                     </li>
@@ -70,7 +70,7 @@
                         </li>
                         <li>
                             <a href="{{ route('courses.index') }}"
-                                class="rounded-lg font-medium {{ request()->routeIs('courses.index') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                class="rounded-lg font-medium {{ request()->routeIs('courses*') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                                 Kursus
                             </a>
                         </li>
@@ -78,6 +78,12 @@
                             <a href="{{ route('aspiration') }}"
                                 class="rounded-lg font-medium {{ request()->routeIs('aspiration') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                                 Kotak Aspirasi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('galleries') }}"
+                                class="rounded-lg font-medium {{ request()->routeIs('galleries') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                                Galeri
                             </a>
                         </li>
                     </ul>
@@ -110,7 +116,7 @@
     </div>
 
     {{-- Sidebar Mobile (Aesthetic Version) --}}
-    <div class="drawer-side z-[100]">
+    <div class="drawer-side z-100">
         <label for="mobile-drawer" class="drawer-overlay bg-black/40 backdrop-blur-sm"></label>
         <aside class="menu p-6 w-80 min-h-full bg-white/90 backdrop-blur-xl text-base-content">
             <div class="flex items-center gap-4 mb-8 px-2">
@@ -121,27 +127,27 @@
             <ul class="space-y-2 text-md font-medium">
                 <li>
                     <a href="{{ route('home') }}"
-                        class="py-3 rounded-xl {{ request()->routeIs('home') ? 'bg-green-700 text-white' : '' }}">
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('home') ? 'bg-green-700 text-white' : 'hover:bg-green-50' }}">
                         Beranda
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('about') }}"
-                        class="py-3 rounded-xl {{ request()->routeIs('about') ? 'bg-green-700 text-white' : '' }}">
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('about') ? 'bg-green-700 text-white' : 'hover:bg-green-50' }}">
                         Tentang
                     </a>
                 </li>
                 <li>
                     <details {{ request()->routeIs('department') ? 'open' : '' }}>
                         <summary
-                            class="py-3 rounded-xl {{ request()->routeIs('department') ? 'text-green-700 font-bold' : '' }}">
+                            class="py-3 px-4 rounded-lg {{ request()->routeIs('department') ? 'bg-green-700 text-white' : 'hover:bg-green-50' }}">
                             Departemen
                         </summary>
                         <ul class="mt-2 space-y-1 ml-4 border-l-2 border-green-100">
                             @foreach ($departmentList as $item)
                                 <li>
-                                    <a href="{{ route('department', $item->id) }}"
-                                        class="rounded-lg {{ request()->fullUrlIs(route('department', $item->id)) ? 'text-green-700 font-bold bg-green-50' : '' }}">
+                                    <a href="{{ route('department', $item->slug) }}"
+                                        class="rounded-xl py-2 {{ request()->fullUrlIs(route('department', $item->slug)) ? 'bg-green-50 text-green-700 font-bold' : 'hover:bg-green-50' }}">
                                         {{ $item->name }}
                                     </a>
                                 </li>
@@ -151,37 +157,36 @@
                 </li>
                 <li>
                     <a href="{{ route('program') }}"
-                        class="py-3 rounded-xl {{ request()->routeIs('program*') ? 'bg-green-700 text-white' : '' }}">
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('program*') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                         Program
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('recruitment') }}"
-                        class="py-3 rounded-xl {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : '' }}">
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                         Perekrutan
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('recruitment') }}"
-                        class="py-3 rounded-xl {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : '' }}">
+                    <a href="{{ route('courses.index') }}"
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('courses*') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
                         Kursus
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('recruitment') }}"
-                        class="py-3 rounded-xl {{ request()->routeIs('recruitment') ? 'bg-green-700 text-white' : '' }}">
-                        Berita
+                    <a href="{{ route('aspiration') }}"
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('aspiration') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                        Kotak Aspirasi
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('aspiration') }}"
-                        class="py-3 rounded-xl {{ request()->routeIs('aspiration') ? 'bg-green-700 text-white' : '' }}">
-                        Kotak Aspirasi
+                    <a href="{{ route('galleries') }}"
+                        class="py-3 px-4 rounded-lg {{ request()->routeIs('galleries') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
+                        Galeri
                     </a>
                 </li>
             </ul>
             <div class="mt-auto flex flex-col gap-3 pt-10">
-                {{-- <a class="btn btn-outline border-gray-200 rounded-xl">Masuk</a> --}}
                 <a href="https://www.instagram.com/himasiubsismi/"
                     class="btn bg-green-700 text-white border-none hover:bg-green-800 rounded-xl">
                     Hubungi Kami
