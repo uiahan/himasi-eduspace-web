@@ -233,65 +233,50 @@
         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 xl:gap-12">
             @foreach ($program as $item)
                 {{-- Ganti 'program.show' dengan nama route detail program kamu --}}
-                <a href="{{ route('program.show', $item->slug) }}"
-                    class="group relative bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 block"
-                    data-aos="fade-up" data-aos-duration="{{ 1000 + $loop->index * 200 }}">
+                <a href="{{ route('program.show', $item->slug) }}" class="block h-full">
+                    <div
+                        class="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col">
 
-                    {{-- Image Container --}}
-                    <div class="relative overflow-hidden h-64">
-                        <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        {{-- Image --}}
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="{{ $item->photo ? asset('storage/' . $item->photo) : 'https://placehold.co/200x400?text=' . urlencode($item->name) }}"
+                                alt="{{ $item->name }}"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            {{-- Floating Badge --}}
+                            <div class="absolute top-6 left-6">
+                                <span
+                                    class="px-4 py-2 bg-white/90 backdrop-blur-md text-green-800 text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg">
+                                    {{ Str::limit($item->department->name, 10, '...') }}
+                                </span>
+                            </div>
                         </div>
 
-                        {{-- Category Badge --}}
-                        <div class="absolute top-5 left-5">
-                            <span
-                                class="px-4 py-2 bg-white/90 backdrop-blur-md text-green-800 text-xs font-bold rounded-xl shadow-lg uppercase tracking-wider">
-                                {{ Str::limit($item->department->name, 10, '...') }}
-                            </span>
-                        </div>
-                    </div>
+                        {{-- Card Body --}}
+                        <div class="p-8 flex flex-col flex-grow space-y-4">
+                            <h2
+                                class="text-2xl font-black text-gray-800 group-hover:text-green-700 transition-colors line-clamp-2 leading-tight">
+                                {{ $item->name }}
+                            </h2>
 
-                    {{-- Content --}}
-                    <div class="p-8">
-                        <h2
-                            class="text-2xl font-bold text-gray-800 group-hover:text-green-700 transition-colors duration-300 line-clamp-1">
-                            {{ $item->name }}
-                        </h2>
-
-                        <div class="mt-4 text-gray-500 text-sm leading-relaxed line-clamp-3 font-light">
-                            {!! $item->description !!}
-                        </div>
-
-                        {{-- Info Row --}}
-                        <div class="mt-8 pt-6 border-t border-gray-50 flex flex-col gap-3">
-                            <div class="flex items-center gap-3 text-sm text-gray-400">
-                                <div
-                                    class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center text-green-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-                                </div>
-                                <span class="truncate font-medium">{!! $item->location !!}</span>
+                            <div class="text-gray-500 text-sm leading-relaxed line-clamp-3 font-light">
+                                {!! trim(strip_tags($item->description)) !== ''
+                                    ? Str::limit($item->description, 30, '...')
+                                    : 'Tidak ada deskripsi untuk program ini.' !!}
                             </div>
 
-                            <div class="flex items-center gap-3 text-sm text-gray-400">
-                                <div
-                                    class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
+                            {{-- Footer Info --}}
+                            <div
+                                class="mt-auto pt-6 border-t border-gray-50 flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-green-600 text-base">📍</span>
+                                    <span class="line-clamp-1">
+                                        {!! trim(strip_tags($item->location)) !== '' ? Str::limit($item->location, 30, '...') : '-' !!}
+                                    </span>
                                 </div>
-                                <span class="font-medium">{{ $item->date }}</span>
+                                <div class="flex items-center gap-2 whitespace-nowrap">
+                                    <span class="text-green-600 text-base">📅</span>
+                                    {{ $item->date ?? '-' }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -340,7 +325,8 @@
         </div>
 
         {{-- Gallery Grid - Modern Bento Style --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 space-y-6" data-aos="fade-up" data-aos-duration="1000">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 space-y-6" data-aos="fade-up"
+            data-aos-duration="1000">
             @foreach ($gallery as $item)
                 <div
                     class="relative group overflow-hidden rounded-[2rem] break-inside-avoid shadow-sm hover:shadow-2xl transition-all duration-500">
