@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('photo')->nullable();
-            $table->text('background')->nullable();
-            $table->text('activity')->nullable();
-            $table->text('description')->nullable();
-            $table->text('location')->nullable();
-            $table->date('date')->nullable();
+            $table->text('background');
+            $table->text('activity');
+            $table->text('description');
+            $table->text('location');
+            $table->date('date');
             $table->foreignId('department_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
