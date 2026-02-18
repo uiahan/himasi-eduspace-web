@@ -29,8 +29,8 @@ return new class extends Migration
                 'video'   // sekalian jika masih ada dari struktur lama
             ]);
 
-            // tambah kolom baru
-            $table->boolean('is_active')->default(true)->after('thumbnail');
+            // // tambah kolom baru
+            // $table->boolean('is_active')->default(true)->after('thumbnail');
         });
     }
 
