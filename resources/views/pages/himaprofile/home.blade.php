@@ -174,7 +174,7 @@
 
             <div class="grid xl:grid-cols-3 grid-cols-1 gap-6 xl:gap-12">
                 @foreach ($departmentList as $item)
-                    <a href="{{ route('department', $item->slug) }}" class="group relative block" data-aos="fade-up"
+                    <a href="{{ route('department', $item->id) }}" class="group relative block" data-aos="fade-up"
                         data-aos-duration="{{ 1000 + $loop->index * 200 }}">
                         {{-- Glow Effect --}}
                         <div
@@ -233,7 +233,7 @@
         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 xl:gap-12">
             @foreach ($program as $item)
                 {{-- Ganti 'program.show' dengan nama route detail program kamu --}}
-                <a href="{{ route('program.show', $item->slug) }}" class="block h-full">
+                <a href="{{ route('program.show', $item->id) }}" class="block h-full">
                     <div
                         class="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col">
 

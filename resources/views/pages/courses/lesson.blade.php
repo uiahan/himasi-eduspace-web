@@ -50,7 +50,7 @@
 
             {{-- Prev --}}
             @if ($prevLesson)
-                <a href="{{ route('courses.lesson', [$course->slug, $prevLesson->slug]) }}"
+                <a href="{{ route('courses.lesson', [$course->id, $prevLesson->id]) }}"
                     class="px-5 py-2 rounded-lg border border-gray-300 hover:bg-green-700 hover:text-white font-semibold transition w-full md:w-auto">
                     ← Sebelumnya
                 </a>
@@ -62,7 +62,7 @@
 
             {{-- Next --}}
             @if ($nextLesson)
-                <a href="{{ route('courses.lesson', [$course->slug, $nextLesson->slug]) }}"
+                <a href="{{ route('courses.lesson', [$course->id, $nextLesson->id]) }}"
                     class="px-5 py-2 rounded-lg border border-gray-300 hover:bg-green-700 hover:text-white font-semibold transition w-full md:w-auto">
                     Selanjutnya →
                 </a>

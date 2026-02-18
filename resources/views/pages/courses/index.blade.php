@@ -7,7 +7,17 @@
 @section('body')
     <main class="min-h-screen">
         <section class="container mx-auto py-10">
-            <section class="max-w-7xl mx-auto px-6 py-12">
+            <section class="max-w-7xl mx-auto px-6 pb-12 pt-36">
+                <div class="max-w-4xl mx-auto md:text-center text-justify space-y-6 mb-20">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-black uppercase tracking-widest"
+                        data-aos="fade-down">
+                        Ayo belajar sekarang
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black text-gray-900 tracking-tighter" data-aos="fade-up"
+                        data-aos-duration="1000">
+                        Kursus <span class="text-green-700">HIMASI</span>
+                    </h1>
+                </div>
 
                 {{-- Header with Search --}}
                 <div class="my-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -64,7 +74,7 @@
                                 </div>
 
                                 <!-- BUTTON pinned to bottom -->
-                                <a href="{{ route('courses.show', $course->slug) }}"
+                                <a href="{{ route('courses.show', $course->id) }}"
                                     class="mt-auto block w-full bg-green-600 hover:bg-green-700 text-white text-center font-medium py-2.5 rounded-lg transition">
                                     Masuk Kursus
                                 </a>

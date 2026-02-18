@@ -10,10 +10,10 @@ class Course extends Model
 {
     protected $guarded = ['id'];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
     public function task()
     {
         return $this->hasMany(Task::class);

@@ -21,6 +21,7 @@ class DepartmentForm
                     ->image()
                     ->disk('public')
                     ->visibility('public')
+                    ->columnSpanFull()
                     ->directory('logo-departement')
                     ->required(),
 

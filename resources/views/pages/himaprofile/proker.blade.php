@@ -37,9 +37,9 @@
                     </a>
 
                     @foreach ($departmentList as $dept)
-                        <a href="{{ route('program', ['department' => $dept->slug]) }}"
+                        <a href="{{ route('program', ['department' => $dept->id]) }}"
                             class="px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-[13px] lg:text-sm font-bold transition-all duration-300 whitespace-nowrap
-                    {{ request('department') == $dept->slug
+                    {{ request('department') == $dept->id
                         ? 'bg-green-700 text-white shadow-lg shadow-green-200'
                         : 'text-gray-500 hover:text-green-700 hover:bg-white' }}">
                             {{ $dept->name }}
@@ -52,7 +52,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
             @foreach ($program as $item)
                 <div class="group" data-aos="fade-up" data-aos-duration="{{ 1000 + $loop->index * 100 }}">
-                    <a href="{{ route('program.show', $item->slug) }}" class="block h-full">
+                    <a href="{{ route('program.show', $item->id) }}" class="block h-full">
                         <div
                             class="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col">
 

@@ -12,9 +12,7 @@ class ProgramController extends Controller
     {
         $program = Program::with('department')
             ->when($request->department, function ($query) use ($request) {
-                $query->whereHas('department', function ($dept) use ($request) {
-                    $dept->where('slug', $request->department);
-                });
+                $query->where('department_id', $request->department);
             })
             ->latest()
             ->paginate(9)
