@@ -36,7 +36,7 @@
                         <li tabindex="0" class="dropdown dropdown-hover">
                             <div role="button"
                                 class="rounded-lg font-medium flex items-center gap-1 {{ request()->routeIs('department') ? 'bg-green-700 text-white' : 'hover:bg-green-200' }}">
-                                Departemen
+                                Struktur
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-50" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -116,7 +116,7 @@
                     {{-- Heading Utama --}}
                     <div class="xl:text-6xl text-4xl font-black text-gray-900 leading-tight" data-aos="fade-up"
                         data-aos-duration="1300">
-                        <h1>Kabinet <br>
+                        <h1>Periode <br>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-emerald-500">
                                 {{ $organization->name }}
                             </span>
@@ -260,7 +260,7 @@
 
                             <div class="text-gray-500 text-sm leading-relaxed line-clamp-3 font-light">
                                 {!! trim(strip_tags($item->description)) !== ''
-                                    ? Str::limit($item->description, 30, '...')
+                                    ? Str::limit($item->description, 100, '...')
                                     : 'Tidak ada deskripsi untuk program ini.' !!}
                             </div>
 

@@ -52,15 +52,10 @@
 
         {{-- Contact Info --}}
         <div>
-            <h3 class="text-white font-bold mb-6 text-lg">Kontak</h3>
+            <h3 class="text-white font-bold mb-6 text-lg">Alamat</h3>
             <ul class="space-y-4 text-green-100/70 text-sm">
                 <li class="flex items-start gap-3">
-                    <span class="text-green-400">📍</span>
                     <span>Jl. Veteran II No.20A, Selabatu, Kec. Cikole, Kota Sukabumi, Jawa Barat 43114</span>
-                </li>
-                <li class="flex items-center gap-3">
-                    <span class="text-green-400">✉️</span>
-                    <span>himasi.sukabumi@ubsi.ac.id</span>
                 </li>
             </ul>
         </div>
