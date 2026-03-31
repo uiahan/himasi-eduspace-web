@@ -117,9 +117,9 @@
                         <div
                             class="relative bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-gray-100 transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-3">
                             {{-- Photo Container --}}
-                            <div class="h-80 overflow-hidden relative">
+                            <div class="h-96 overflow-hidden relative">
                                 <img src="{{ asset('storage/' . $staff->photo) }}" alt="{{ $staff->name }}"
-                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                    class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110">
                                 {{-- Overlay Gradient --}}
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
